@@ -18,9 +18,13 @@ export class FormPage implements OnInit {
 
   ngOnInit() {
     this.showID = this.formService.getShowID();
+    console.log(this.showID);
     this.showName = this.formService.getShowName();
+    console.log(this.showName);
     this.showBirthday = this.formService.getShowBirthday();
+    console.log(this.showBirthday);
     this.showSex = this.formService.getShowSex();
+    console.log(this.showSex);
   }
 
 }

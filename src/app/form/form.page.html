@@ -5,23 +5,25 @@
 </ion-header>
 
 <ion-content fullscreen>
-    <ion-button color="medium" href="/home">back</ion-button>
-    <ion-item *ngIf="showID">
-      <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
-      <ion-input required type="number"></ion-input>
-    </ion-item>
+    <ion-button color="medium" routerLink="/home">back</ion-button>
+    <div *ngIf="showID">
+        <ion-item>
+            <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
+            <ion-input required type="number"></ion-input>
+          </ion-item>
+    </div>
 
-    <ion-item>
+    <ion-item *ngIf="showName">
       <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
       <ion-input required type="text"></ion-input>
     </ion-item>
 
-    <ion-item>
+    <ion-item *ngIf="showBirthday">
         <ion-label>month day, year</ion-label>
         <ion-datetime displayFormat="MMM DD, YYYY" placeholder="Birthday"></ion-datetime>
     </ion-item>
 
-    <ion-radio-group>
+    <ion-radio-group *ngIf="showSex">
         <ion-list-header>
             Sex
           </ion-list-header>
@@ -36,5 +38,5 @@
             <ion-radio value="male"></ion-radio>
           </ion-item>
     </ion-radio-group>
-    <ion-button expand="block" color="medium" href="/session">begin</ion-button>
+    <ion-button expand="block" color="medium" routerLink="/session">begin</ion-button>
 </ion-content>

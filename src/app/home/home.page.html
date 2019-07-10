@@ -1,5 +1,5 @@
 <ion-header>
-    <ion-button fill="clear" color="dark" href="/settings" class="settings">
+    <ion-button fill="clear" color="dark" routerLink="/settings" class="settings">
         <ion-icon name="settings"></ion-icon>
     </ion-button>
   <ion-toolbar>
@@ -10,7 +10,10 @@
 </ion-header>
 
 <ion-content>
-  <ion-button expand="block" color="medium" href="/form">Start Session</ion-button>
-  <ion-button expand="block" color="medium" href="/quickplay">Quickplay</ion-button>
-  <ion-button expand="block" color="medium" href="/history">History</ion-button>
+  <ion-button expand="block" color="medium" routerLink="/form">Start Session</ion-button>
+  <ion-button expand="block" color="medium" routerLink="/quickplay">Quickplay</ion-button>
+  <ion-button expand="block" color="medium" routerLink="/history">History</ion-button>
+  <ion-button expand="block" routerLink="/dashboard" routerDirection="root">
+    Login
+  </ion-button>
 </ion-content>

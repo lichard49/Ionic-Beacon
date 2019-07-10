@@ -7,10 +7,10 @@ import { FormService } from '../form.service';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-  showID: boolean = true;
-  showName: boolean = true;
-  showBirthday: boolean = true;
-  showSex: boolean = true;
+  showID: boolean;
+  showName: boolean;
+  showBirthday: boolean;
+  showSex: boolean;
 
   constructor(
     private formService: FormService
@@ -25,18 +25,21 @@ export class SettingsPage implements OnInit {
 
   changeShowID() {
     this.formService.changeShowID();
+    console.log(this.formService.getShowID());
   }
 
   changeShowName() {
     this.formService.changeShowName();
+    console.log(this.formService.getShowName());
   }
 
   changeShowBirthday() {
     this.formService.changeShowBirthday();
+    console.log(this.formService.getShowBirthday());
   }
 
   changeShowSex() {
     this.formService.changeShowSex();
+    console.log(this.formService.getShowSex());
   }
-
 }
