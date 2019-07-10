@@ -1,9 +1,31 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-title style="text-align: center">settings</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-button color="medium" href="/home">back</ion-button>
 
+    <ion-list>
+        <ion-item>
+          <ion-label>Study ID</ion-label>
+          <ion-toggle checked="studyID" (ionChange)="changeShowID()"></ion-toggle>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Name</ion-label>
+          <ion-toggle checked></ion-toggle>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label>Birthday</ion-label>
+          <ion-toggle checked></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Sex</ion-label>
+          <ion-toggle checked></ion-toggle>
+        </ion-item>
+      </ion-list>
 </ion-content>

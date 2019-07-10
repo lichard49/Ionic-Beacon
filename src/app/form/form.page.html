@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>form</ion-title>
+    <ion-title style="text-align: center">data</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen>
+    <ion-button color="medium" href="/home">back</ion-button>
+    <ion-item *ngIf="showID">
+      <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
+      <ion-input required type="number"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
+      <ion-input required type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>month day, year</ion-label>
+        <ion-datetime displayFormat="MMM DD, YYYY" placeholder="Birthday"></ion-datetime>
+    </ion-item>
+
+    <ion-radio-group>
+        <ion-list-header>
+            Sex
+          </ion-list-header>
+      
+          <ion-item>
+            <ion-label>Female</ion-label>
+            <ion-radio value="female"></ion-radio>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio value="male"></ion-radio>
+          </ion-item>
+    </ion-radio-group>
+    <ion-button expand="block" color="medium" href="/session">begin</ion-button>
 </ion-content>
