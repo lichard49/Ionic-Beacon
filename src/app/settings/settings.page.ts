@@ -25,21 +25,17 @@ export class SettingsPage implements OnInit {
 
   changeShowID() {
     this.formService.changeShowID();
-    console.log(this.formService.getShowID());
   }
 
   changeShowName() {
     this.formService.changeShowName();
-    console.log(this.formService.getShowName());
   }
 
   changeShowBirthday() {
     this.formService.changeShowBirthday();
-    console.log(this.formService.getShowBirthday());
   }
 
   changeShowSex() {
     this.formService.changeShowSex();
-    console.log(this.formService.getShowSex());
   }
 }

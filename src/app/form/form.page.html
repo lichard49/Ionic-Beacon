@@ -6,6 +6,7 @@
 
 <ion-content fullscreen>
     <ion-button color="medium" routerLink="/home">back</ion-button>
+    <p *ngIf="showID || showName || showBirthday || showSex">Please enter the following information: </p>
     <div *ngIf="showID">
         <ion-item>
             <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
@@ -19,7 +20,7 @@
     </ion-item>
 
     <ion-item *ngIf="showBirthday">
-        <ion-label>month day, year</ion-label>
+        <ion-label>mmm dd, yyyy</ion-label>
         <ion-datetime displayFormat="MMM DD, YYYY" placeholder="Birthday"></ion-datetime>
     </ion-item>
 
