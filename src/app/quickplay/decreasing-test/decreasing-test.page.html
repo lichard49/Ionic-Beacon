@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>decreasingTest</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar>
+      <ion-title style="text-align: center">quickplay</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-row>
+        <ion-col style="text-align: center">
+            <ion-button color="medium" size="small" routerLink="/">End Session</ion-button>
+          </ion-col>
+    </ion-row>
+    <p class="instructions">Press the grey shape on the screen whenever the light appears to be flickering. </p>
+    <ion-item-divider></ion-item-divider>
+    <div class="box"></div>
+  
+    <ion-row>
+        <ion-col style="text-align: center">
+            <ion-button shape="round" color="medium" class="flicker"></ion-button>
+          </ion-col>
+    </ion-row>
+  </ion-content>
+  
