@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { QuickplayPage } from './quickplay.page';
+import { DecreasingTestPage } from './decreasing-test.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: QuickplayPage
+    component: DecreasingTestPage
   }
 ];
 
@@ -21,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [QuickplayPage]
+  declarations: [DecreasingTestPage]
 })
-export class QuickplayPageModule {}
+export class DecreasingTestPageModule {}

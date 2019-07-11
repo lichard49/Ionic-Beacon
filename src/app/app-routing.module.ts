@@ -7,9 +7,10 @@ const routes: Routes = [
   { path: 'form', loadChildren: './form/form.module#FormPageModule' },
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   { path: 'history', loadChildren: './history/history.module#HistoryPageModule' },
-  { path: 'quickplay', loadChildren: './quickplay/quickplay.module#QuickplayPageModule' },
   { path: 'increasing-instr', loadChildren: './quickplay/increasing-instr/increasing-instr.module#IncreasingInstrPageModule' },
-  { path: 'increasing-test', loadChildren: './quickplay/increasing-test/increasing-test.module#IncreasingTestPageModule' }
+  { path: 'increasing-test', loadChildren: './quickplay/increasing-test/increasing-test.module#IncreasingTestPageModule' },
+  { path: 'decreasing-instr', loadChildren: './quickplay/decreasing-instr/decreasing-instr.module#DecreasingInstrPageModule' },
+  { path: 'decreasing-test', loadChildren: './quickplay/decreasing-test/decreasing-test.module#DecreasingTestPageModule' }
 ];
 
 @NgModule({
