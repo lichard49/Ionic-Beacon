@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title style="text-align: center">data</ion-title>
+      <ion-buttons slot="start">
+          <ion-button color="medium" routerLink="/home"><ion-icon name="arrow-dropleft"></ion-icon> back </ion-button>
+      </ion-buttons>
+      <ion-title style="padding-left: 100px;">data</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-    <ion-button color="medium" routerLink="/home">back</ion-button>
     <p *ngIf="showID || showName || showBirthday || showSex">Please enter the following information: </p>
     <div *ngIf="showID">
         <ion-item>

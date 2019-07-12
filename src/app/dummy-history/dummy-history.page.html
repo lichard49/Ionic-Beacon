@@ -1,11 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title style="text-align: center">Random Data</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="medium" routerLink="/home"> <ion-icon name="arrow-dropleft"></ion-icon> back</ion-button>
+        </ion-buttons>
+        <ion-title style="padding-left: 60px;">dummy data</ion-title>
+      </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-button color="medium" routerLink="/history">back</ion-button>
+  <br>
     <div *ngFor="let data of parsedData" class="format">
         <div class="sessionInfo">
             <h2> #{{ data.studyID }} </h2> <br>

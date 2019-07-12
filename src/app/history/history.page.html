@@ -1,11 +1,13 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title style="text-align: center">history</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-button color="medium" routerLink="/home"> <ion-icon name="arrow-dropleft"></ion-icon> back</ion-button>
+        </ion-buttons>
+        <ion-title style="padding-left: 60px;">history</ion-title>
+      </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-button color="medium" routerLink="/home">back</ion-button>
   <ion-col>
     <div class="table" *ngFor="let data of parsedData"> 
         <ion-item-divider></ion-item-divider><br>
