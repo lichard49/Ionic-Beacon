@@ -6,7 +6,7 @@
 
 <ion-content>
     <ion-button color="medium" routerLink="/history">back</ion-button>
-    <div *ngFor="let data of parsedData">
+    <div *ngFor="let data of parsedData" class="format">
         <div class="sessionInfo">
             <h2> #{{ data.studyID }} </h2> <br>
             <h6>
@@ -20,11 +20,23 @@
                   Ascending Descending
               </ion-row>
           </div>
-          <div class="data" *ngFor="let item of data['session']; let i = index">
+          <div *ngFor="let item of data['session']; let i = index">
             <ion-row>
               Run {{ i + 1 }}: 
+              <div class="data">
+                  {{ item.incr }}
+                  {{ item.decr }}
+              </div>
             </ion-row>
           </div>
+          <br>
+          <div>Graph: XXXXX</div> 
+          <br>
+          Notes: <br>
+          <div class="notes">
+            Someone walked in during the session. 
+          </div>
+
     </div>
    
 </ion-content>
