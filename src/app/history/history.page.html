@@ -6,4 +6,15 @@
 
 <ion-content>
   <ion-button color="medium" routerLink="/home">back</ion-button>
+  <ion-col>
+    <div class="table" *ngFor="let data of parsedData"> 
+        <ion-item-divider></ion-item-divider><br>
+        <div>
+            Study ID: #{{ data.studyID }}
+        </div>
+    </div>
+    <div class="table">
+      <ion-item-divider></ion-item-divider>
+    </div>
+  </ion-col>
 </ion-content>
