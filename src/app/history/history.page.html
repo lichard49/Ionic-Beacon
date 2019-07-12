@@ -13,11 +13,15 @@
           <div routerLink="/{{ data.studyID }}/{{ data.date | date: 'MMM-dd-y' }}/t {{data.date | date: 'HH:mm:ss'}} ">
         -->
         <div routerLink="/dummy-history">
-            Study ID: #{{ data.studyID }}
-            <br><br>
+            Study ID: #{{ data.studyID }} 
+            <br>
+            <div class="arrow">
+                <ion-icon name="play"></ion-icon>
+            </div>
+            <br>
             <ion-row>
-                {{ data.date | date: 'longDate' }}
-                {{ data.date | date: 'shortTime'}}
+                {{ data.date | date: 'longDate' }} 
+                {{ data.date | date: 'shortTime' }}
             </ion-row>
         </div>
     </div>
