@@ -9,8 +9,16 @@
   <ion-col>
     <div class="table" *ngFor="let data of parsedData"> 
         <ion-item-divider></ion-item-divider><br>
-        <div>
+        <!--
+          <div routerLink="/{{ data.studyID }}/{{ data.date | date: 'MMM-dd-y' }}/t {{data.date | date: 'HH:mm:ss'}} ">
+        -->
+        <div routerLink="/dummy-history">
             Study ID: #{{ data.studyID }}
+            <br><br>
+            <ion-row>
+                {{ data.date | date: 'longDate' }}
+                {{ data.date | date: 'shortTime'}}
+            </ion-row>
         </div>
     </div>
     <div class="table">

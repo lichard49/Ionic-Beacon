@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: 'increasing-test', loadChildren: './quickplay/increasing-test/increasing-test.module#IncreasingTestPageModule' },
   { path: 'decreasing-instr', loadChildren: './quickplay/decreasing-instr/decreasing-instr.module#DecreasingInstrPageModule' },
   { path: 'decreasing-test', loadChildren: './quickplay/decreasing-test/decreasing-test.module#DecreasingTestPageModule' },
-  { path: 'results', loadChildren: './quickplay/results/results.module#ResultsPageModule' }
+  { path: 'results', loadChildren: './quickplay/results/results.module#ResultsPageModule' },
+  { path: 'dummy-history', loadChildren: './dummy-history/dummy-history.module#DummyHistoryPageModule' }
 ];
 
 @NgModule({

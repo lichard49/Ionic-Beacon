@@ -10,8 +10,7 @@ export class HistoryPage implements OnInit {
   userData = [
     {
       "studyID": "12345",
-      "date": "2019-07-20",
-      "time": "08:23",
+      "date": "2019-07-20 10:51:24 GMT-0700",
       "sex": "f",
       "dateOfBirth": "1987-01-02",
       "minHz": "25.0",
@@ -31,8 +30,7 @@ export class HistoryPage implements OnInit {
     },
     {
       "studyID": "98702",
-      "date": "2019-07-21",
-      "time": "08:24",
+      "date": "2019-07-21 08:24:24 GMT-0700",
       "sex": "f",
       "dateOfBirth": "1987-01-03",
       "minHz": "25.0",
@@ -52,8 +50,7 @@ export class HistoryPage implements OnInit {
     },
     {
       "studyID": "09873",
-      "date": "2019-07-25",
-      "time": "11:24",
+      "date": "2019-07-25 15:23:24 GMT-0700",
       "sex": "f",
       "dateOfBirth": "1987-01-03",
       "minHz": "25.0",
@@ -78,6 +75,10 @@ export class HistoryPage implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  popup() {
+    alert("whaat");
   }
 
 }
