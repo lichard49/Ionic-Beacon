@@ -1,9 +1,23 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>incrTest</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-
-</ion-content>
+    <ion-toolbar>
+      <ion-title style="text-align: center">session</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-row>
+        <ion-col style="text-align: center">
+            <ion-button color="medium" size="small" (click)="presentAlertConfirm()">End Session</ion-button>
+          </ion-col>
+    </ion-row>
+    <p class="instructions">Press the grey shape on the screen whenever the light appears to be fused. </p>
+    <ion-item-divider></ion-item-divider>
+    <div class="box"></div>
+  
+    <ion-row>
+        <ion-col style="text-align: center">
+            <ion-button shape="round" color="medium" routerLink="/decr-instr" class="flicker"></ion-button>
+          </ion-col>
+    </ion-row>
+  </ion-content>
+  

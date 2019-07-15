@@ -1,9 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>incrInstr</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button color="medium" routerLink="/home"> <ion-icon name="arrow-dropleft"></ion-icon> back</ion-button>
+      </ion-buttons>
+      <ion-title style="padding-left: 60px;">instructions</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
-
+<p class="instructions">Press the grey shape on the next screen whenever the light appears to be fused. <br><br> 
+You may end the session anytime by pressing the button at the top of the next screen. </p>
+<ion-item-divider></ion-item-divider>
+<ion-button expand="block" color="medium" routerLink="/incr-test">Begin</ion-button>
 </ion-content>

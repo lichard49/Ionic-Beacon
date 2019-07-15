@@ -1,9 +1,15 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>decrInstr</ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button color="medium" (click)="presentAlertConfirm()">end</ion-button>
+      </ion-buttons>
+      <ion-title style="padding-left: 80px;">instructions</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
 <ion-content>
-
+    <p class="instructions">Press the grey shape on the next screen whenever the light appears to be fused. <br><br> 
+      You may end the session anytime by pressing the button at the top of the next screen. </p>
+      <ion-item-divider></ion-item-divider>
+      <ion-button expand="block" color="medium" routerLink="/decr-test">Begin</ion-button>
 </ion-content>
