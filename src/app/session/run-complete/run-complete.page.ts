@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RunTrackerService } from '../../run-tracker.service';
 
 @Component({
   selector: 'app-run-complete',
@@ -8,15 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class RunCompletePage implements OnInit {
   total: number;
   current: number;
-  constructor() { }
+  constructor(
+    private runTracker: RunTrackerService
+  ) { }
 
   ngOnInit() {
-    this.current = 1;
-    this.total = 4;
+    this.current = this.runTracker.getCounter();
+    this.total = this.runTracker.getTotal();
   }
 
   updateCounter() {
-    this.current = this.current + 1;
+    this.runTracker.incrementCounter();
   }
 
 }
