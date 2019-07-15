@@ -25,23 +25,27 @@
     
         <ion-item *ngIf="showBirthday">
             <ion-label position="stacked">Birthday</ion-label>
-            <ion-input formControlName="dateOfBirth">
-            </ion-input>
+            <ion-datetime displayFormat="MMM DD, YYYY" placeholder="MMM DD, YYYY"></ion-datetime>
         </ion-item>
     
-        <ion-radio-group *ngIf="showSex">
-            <ion-list-header>
-                Sex
-              </ion-list-header>
-
-              <ion-input formControlName="sex">
-                  <ion-label>Female</ion-label>
-                  <ion-radio value="female" name="female"></ion-radio>
-            
-                  <ion-label>Male</ion-label>
-                  <ion-radio value="male" name="male"></ion-radio>
-              </ion-input>
-        </ion-radio-group> 
+        
+        <ion-input formControlName="sex" radio-group *ngIf="showSex">
+            <ion-radio-group>
+                <ion-list-header>
+                    Sex
+                  </ion-list-header>
+              <ion-item>
+                <ion-label>Female</ion-label>
+                <ion-radio value="female" name="sex"></ion-radio>
+              </ion-item>
+      
+              <ion-item>
+                <ion-label>Male</ion-label>
+                <ion-radio value="male" name="sex"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+        </ion-input>
+          
     </form>
 
     <ion-button expand="block" color="medium" routerLink="/session">begin</ion-button>

@@ -12,7 +12,14 @@ const routes: Routes = [
   { path: 'decreasing-instr', loadChildren: './quickplay/decreasing-instr/decreasing-instr.module#DecreasingInstrPageModule' },
   { path: 'decreasing-test', loadChildren: './quickplay/decreasing-test/decreasing-test.module#DecreasingTestPageModule' },
   { path: 'results', loadChildren: './quickplay/results/results.module#ResultsPageModule' },
-  { path: 'dummy-history', loadChildren: './dummy-history/dummy-history.module#DummyHistoryPageModule' }
+  { path: 'dummy-history', loadChildren: './dummy-history/dummy-history.module#DummyHistoryPageModule' },
+  { path: 'incr-instr', loadChildren: './session/incr-instr/incr-instr.module#IncrInstrPageModule' },
+  { path: 'incr-test', loadChildren: './session/incr-test/incr-test.module#IncrTestPageModule' },
+  { path: 'decr-instr', loadChildren: './session/decr-instr/decr-instr.module#DecrInstrPageModule' },
+  { path: 'decr-test', loadChildren: './session/decr-test/decr-test.module#DecrTestPageModule' },
+  { path: 'run-complete', loadChildren: './session/run-complete/run-complete.module#RunCompletePageModule' },
+  { path: 'notes', loadChildren: './session/notes/notes.module#NotesPageModule' },
+  { path: 'summary', loadChildren: './session/summary/summary.module#SummaryPageModule' }
 ];
 
 @NgModule({
