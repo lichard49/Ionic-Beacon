@@ -77,8 +77,4 @@ export class HistoryPage implements OnInit {
   ngOnInit() {
   }
 
-  popup() {
-    alert("whaat");
-  }
-
 }

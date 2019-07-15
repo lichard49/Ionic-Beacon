@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./run-complete.page.scss'],
 })
 export class RunCompletePage implements OnInit {
-
+  total: number;
+  current: number;
   constructor() { }
 
   ngOnInit() {
+    this.current = 1;
+    this.total = 4;
+  }
+
+  updateCounter() {
+    this.current = this.current + 1;
   }
 
 }

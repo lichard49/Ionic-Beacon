@@ -31,7 +31,8 @@ export class DummyHistoryPage implements OnInit {
   parsedData = [];
   constructor() {
     var stringifiedData = JSON.stringify(this.userData);
-    this.parsedData = JSON.parse(stringifiedData); }
+    this.parsedData = JSON.parse(stringifiedData); 
+  }
 
   ngOnInit() {
   }
