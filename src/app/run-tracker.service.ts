@@ -7,7 +7,8 @@ export class RunTrackerService {
   counter: number;
   total: number;
   constructor() {
-    this.counter = 1;
+    // will start out as 1, currently 3 in order to bypass multiple screens
+    this.counter = 3;
     // change this depending on what the user puts in
     this.total = 4; 
   }

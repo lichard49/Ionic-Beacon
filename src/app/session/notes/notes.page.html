@@ -1,9 +1,20 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>notes</ion-title>
+    <ion-title style="text-align: center">notes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<div class="notes">
+  <h1>Notes</h1>
+  Instructions: Enter any notes you want.
+  <br>
+  Examples: <i>A person walked in during the session, got distracted during one of the runs. </i>
+  <br>
+  <ion-label position="stacked">Notes<ion-text color="danger"></ion-text></ion-label>
+  <ion-input type="text"></ion-input>
+</div>
+<div class="rightAlign">
+    <ion-button color="medium" routerLink="/summary">Next</ion-button>
+</div>
 </ion-content>
