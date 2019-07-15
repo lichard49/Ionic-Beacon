@@ -9,37 +9,45 @@
 
 <ion-content fullscreen>
     <p *ngIf="showID || showName || showBirthday || showSex">Please enter the following information: </p>
-    <div *ngIf="showID">
-        <ion-item>
-            <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
-            <ion-input required type="number"></ion-input>
-          </ion-item>
-    </div>
 
-    <ion-item *ngIf="showName">
-      <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
-      <ion-input required type="text"></ion-input>
-    </ion-item>
 
-    <ion-item *ngIf="showBirthday">
-        <ion-label>mmm dd, yyyy</ion-label>
-        <ion-datetime displayFormat="MMM DD, YYYY" placeholder="Birthday"></ion-datetime>
-    </ion-item>
+    <form [formGroup]="myForm">
+        <div *ngIf="showID">
+            <ion-input formControlName="studyID" type="number">
+                <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
+                <ion-input required type="number"></ion-input>
+              </ion-input>
+        </div>
+    
+        <ion-item *ngIf="showName">
+          <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
+          <ion-input required type="text"></ion-input>
+        </ion-item>
+    
+        <ion-item *ngIf="showBirthday">
+            <ion-label>mmm dd, yyyy</ion-label>
+            <ion-datetime displayFormat="MMM DD, YYYY" placeholder="Birthday"></ion-datetime>
+        </ion-item>
+    
+        <ion-radio-group *ngIf="showSex">
+            <ion-list-header>
+                Sex
+              </ion-list-header>
+          
+              <ion-item>
+                <ion-label>Female</ion-label>
+                <ion-radio value="female"></ion-radio>
+              </ion-item>
+          
+              <ion-item>
+                <ion-label>Male</ion-label>
+                <ion-radio value="male"></ion-radio>
+              </ion-item>
+        </ion-radio-group>
+    </form>
 
-    <ion-radio-group *ngIf="showSex">
-        <ion-list-header>
-            Sex
-          </ion-list-header>
-      
-          <ion-item>
-            <ion-label>Female</ion-label>
-            <ion-radio value="female"></ion-radio>
-          </ion-item>
-      
-          <ion-item>
-            <ion-label>Male</ion-label>
-            <ion-radio value="male"></ion-radio>
-          </ion-item>
-    </ion-radio-group>
+
+
+    
     <ion-button expand="block" color="medium" routerLink="/session">begin</ion-button>
 </ion-content>

@@ -3,6 +3,9 @@ import { FormService } from '../form.service';
 // testing this datepicker
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 
+// testing out forms
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-form',
@@ -10,6 +13,8 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
   styleUrls: ['./form.page.scss'],
 })
 export class FormPage implements OnInit {
+  myForm: FormGroup; 
+
   showID: boolean;
   showName: boolean;
   showBirthday: boolean;
@@ -17,8 +22,16 @@ export class FormPage implements OnInit {
 
   constructor(
     private formService: FormService,
-    private datePicker: DatePicker
-  ) { }
+    private datePicker: DatePicker,
+    private formBuilder: FormBuilder
+  ) { 
+    this.myForm = this.formBuilder.group({
+      studyID: '',
+      name: '',
+      dateOfBirth: '',
+      sex: '',
+    })
+  }
 
   ngOnInit() {
     this.showID = this.formService.getShowID();
@@ -34,6 +47,8 @@ export class FormPage implements OnInit {
       date => console.log('Got date: ', date),
       err => console.log('Error occurred while getting date: ', err)
     );
+
+    this.myForm.valueChanges.subscribe(console.log)
   }
 
 }

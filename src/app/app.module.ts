@@ -11,10 +11,17 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 
+//import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule,
+   // ReactiveFormsModule
+  ],
   providers: [
     StatusBar,
     DatePicker,
