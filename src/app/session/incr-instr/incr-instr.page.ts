@@ -1,3 +1,6 @@
+/**
+ * This page is used for displaying the increasing instructions in session mode.
+ */
 import { Component, OnInit } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { Router } from '@angular/router';

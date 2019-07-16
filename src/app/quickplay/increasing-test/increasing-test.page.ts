@@ -1,5 +1,8 @@
+/**
+ * This page is used for displaying the increasing test in quickplay mode.
+ */
 import { Component, OnInit } from '@angular/core';
-import {AlertController} from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,6 +21,8 @@ export class IncreasingTestPage implements OnInit {
   ngOnInit() {
   }
 
+  // Presents the user with a confirmation dialog before exiting a session.
+  // Indicating that they want to exit takes them back to the homepage, otherwise it dismisses the dialog.
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Confirmation',

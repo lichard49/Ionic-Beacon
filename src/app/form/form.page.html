@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
-          <ion-button color="medium" routerLink="/home"><ion-icon name="arrow-dropleft"></ion-icon> back </ion-button>
+          <ion-back-button></ion-back-button>      
       </ion-buttons>
       <ion-title style="padding-left: 100px;">data</ion-title>
   </ion-toolbar>
@@ -25,11 +25,9 @@
     
         <ion-item *ngIf="showBirthday">
             <ion-label position="stacked">Birthday</ion-label>
-            <ion-input formControlName="dateOfBirth">
-                <ion-datetime displayFormat="MMM DD, YYYY" placeholder="MMM DD, YYYY"></ion-datetime>
+            <ion-input formControlName="dateOfBirth" (click)="showDate2()">
             </ion-input>
         </ion-item>
-    
         
         <ion-input formControlName="sex" radio-group *ngIf="showSex">
             <ion-radio-group>

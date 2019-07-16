@@ -1,3 +1,7 @@
+/**
+ * History displays the record of sessions conducted on the app.
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryPage implements OnInit {
   parsedData = [];
+  // Currently, user data is hardcoded data in JSON format. Eventually this data will come from the database.
+  // Parameters include studyID, date, sex, DOB, min/max frequency, and session run data.
   userData = [
     {
       "studyID": "12345",
@@ -69,6 +75,8 @@ export class HistoryPage implements OnInit {
       "variance": "2.3"
     }
   ]
+
+  // First converts the JSON into a string and then parses it into an object easily accessible by a function.
   constructor() {
     var stringifiedData = JSON.stringify(this.userData);
     this.parsedData = JSON.parse(stringifiedData);

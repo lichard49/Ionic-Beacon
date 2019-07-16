@@ -1,3 +1,6 @@
+/**
+ * Settings page with toggle buttons for which fields to display in the input form. 
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../form.service';
 
@@ -12,6 +15,7 @@ export class SettingsPage implements OnInit {
   showBirthday: boolean;
   showSex: boolean;
 
+  // Creates 
   constructor(
     private formService: FormService
   ) { }

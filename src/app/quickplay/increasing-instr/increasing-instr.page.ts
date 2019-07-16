@@ -1,3 +1,6 @@
+/**
+ * This page is used for displaying the increasing instructions in quickplay mode.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

@@ -1,3 +1,6 @@
+/**
+ * This page is used for displaying the notes page in the session.
+ */
 import { Component, OnInit } from '@angular/core';
 
 @Component({

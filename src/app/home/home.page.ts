@@ -1,3 +1,8 @@
+/**
+ * This serves as the "homepage" for the app. You can navigate to the quickplay, session, history, and settings page
+ * from here. 
+ */
+
 import { Component } from '@angular/core';
 
 @Component({

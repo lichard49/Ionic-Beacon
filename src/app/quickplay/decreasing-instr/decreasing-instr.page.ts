@@ -1,3 +1,6 @@
+/**
+ * This page is used for displaying the decreasing instructions in quickplay mode.
+ */
 import { Component, OnInit } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -17,7 +20,7 @@ export class DecreasingInstrPage implements OnInit {
 
   ngOnInit() {
   }
-  
+
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Confirmation',

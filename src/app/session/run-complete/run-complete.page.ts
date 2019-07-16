@@ -1,3 +1,6 @@
+/**
+ * The x/n runs complete page.
+ */
 import { Component, OnInit } from '@angular/core';
 import { RunTrackerService } from '../../run-tracker.service';
 
@@ -13,11 +16,13 @@ export class RunCompletePage implements OnInit {
     private runTracker: RunTrackerService
   ) { }
 
+  // Fetches the total number of runs completed and the total number of runs needed from the service.
   ngOnInit() {
     this.current = this.runTracker.getCounter();
     this.total = this.runTracker.getTotal();
   }
 
+  // Updates the number of runs performed in a session.
   updateCounter() {
     this.runTracker.incrementCounter();
   }
