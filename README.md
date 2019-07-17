@@ -16,7 +16,7 @@ Also download Angular using `npm install -g @angular/cli`.
 This app uses the native datepicker, so you'll need to install the datepicker plugin. Run `ionic cordova plugin add cordova-plugin-datepicker` and then `npm install @ionic-native/date-picker`.
 
 ## Server
-After running `ionic serve` in the correct project folder, navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
+After running `ionic serve` in the project folder, navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
 
 ## Configure Platforms
 Before displaying the app, you'll need to download whichever platform you want to use to display the app. For iOS, run 
