@@ -27,4 +27,8 @@ export class RunCompletePage implements OnInit {
     this.runTracker.incrementCounter();
   }
 
+  resetCounter() {
+    this.runTracker.resetCounter();
+  }
+
 }

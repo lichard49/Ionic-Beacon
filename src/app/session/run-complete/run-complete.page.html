@@ -10,7 +10,7 @@
 </div>
 
 <div class="rightAlign">
-    <ion-button color="medium" routerLink="/notes" *ngIf="current == total">Continue</ion-button>
+    <ion-button color="medium" routerLink="/notes" *ngIf="current == total" (click)="resetCounter()">Continue</ion-button>
 </div>
     <ion-row *ngIf = "current < total">
         <ion-button color="medium">Redo</ion-button>
