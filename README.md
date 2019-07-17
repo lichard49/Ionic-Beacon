@@ -1,12 +1,12 @@
 # Ionic-Beacon
 
 ## Setup
-Before downloading Ionic, make sure you have the latest version of Node.js and npm (automatically installed with Node.js)
+Make sure you have the latest version of Node.js and npm (automatically installed with Node.js)
 You can verify if you have node and npm installed by running 
 `node -v` and `npm -v`. 
 To update npm, run 
 `npm install npm@latest -g`. 
-To download Node.js and npm, follow the steps outlined in https://nodejs.org/en/download/.
+If you do not have Node.js and npm, follow the steps outlined in https://nodejs.org/en/download/.
 
 ## 
 Then, download the latest version of Ionic and Cordova by running `npm install -g ionic cordova`. 
