@@ -12,6 +12,9 @@ To download Node.js and npm, follow the steps outlined in https://nodejs.org/en/
 Then, download the latest version of Ionic and Cordova by running `npm install -g ionic cordova`. 
 Also download Angular using `npm install -g @angular/cli`.
 
+## Plugins
+This app uses the native datepicker, so you'll need to install the datepicker plugin. Run `ionic cordova plugin add cordova-plugin-datepicker` and then `npm install @ionic-native/date-picker`.
+
 ## Server
 After running `ionic serve` in the correct project folder, navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
 
