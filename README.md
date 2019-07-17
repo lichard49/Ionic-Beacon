@@ -22,7 +22,7 @@ Before displaying the app, you'll need to download whichever platform you want t
 ## Integrating with Cordova
 Since this app is designed to be cross-platform, you can use Cordova to display whichever app version you want (iOS or Android). 
 
-Run `ionic cordova build xx` where xx is either `ios` or `android`. 
+Run `ionic cordova build ios` or `ionic cordova build android`, depending on which platform you want to use.
 
 ## Viewing on a Device
 You can run `ionic cordova emulate` in the terminal (automatically builds) to see the app on either an iOS or an Android device. 
