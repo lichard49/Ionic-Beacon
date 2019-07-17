@@ -13,7 +13,7 @@
         <ion-item>
           <ion-label>Number of Runs</ion-label>
           <!-- TODO: Bind the number of runs to a service (dicates the number of times to display pages) -->
-          <ion-input type="number"></ion-input>
+          <ion-input type="number" [(ngModel)]="total" (ionChange)="setTotal()"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>Study ID</ion-label>

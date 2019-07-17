@@ -4,6 +4,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../form.service';
 
+import { RunTrackerService } from '../run-tracker.service';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
@@ -15,10 +17,20 @@ export class SettingsPage implements OnInit {
   showBirthday: boolean;
   showSex: boolean;
 
+  total: number;
+
   // Creates 
   constructor(
-    private formService: FormService
-  ) { }
+    private formService: FormService,
+    private runTracker: RunTrackerService
+  ) { 
+    this.total = runTracker.getTotal();
+  }
+
+  setTotal() {
+    this.runTracker.setTotal(this.total);
+    console.log(this.total);
+  }
 
   ngOnInit() {
     this.showID = this.formService.getShowID();

@@ -13,6 +13,11 @@ export class RunTrackerService {
     this.total = 4; 
   }
 
+  // just to test if this works, will make a setTotal() function instead
+  setTotal(total) {
+    this.total = total;
+  }
+
   incrementCounter() {
     this.counter++;
   }
