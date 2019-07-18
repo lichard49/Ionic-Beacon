@@ -4,6 +4,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { Router } from '@angular/router';
+import { RunTrackerService } from '../../run-tracker.service';
 
 @Component({
   selector: 'app-decr-instr',
@@ -15,7 +16,8 @@ export class DecrInstrPage implements OnInit {
   button = document.querySelector('ion-button');
   constructor(
     public alertController: AlertController,
-    private router: Router
+    private router: Router,
+    private runTracker: RunTrackerService
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,7 @@ export class DecrInstrPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
+            this.runTracker.resetCounter();
             this.router.navigate(['/home']);
           }
         }

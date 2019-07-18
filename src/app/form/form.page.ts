@@ -11,12 +11,12 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 // testing out forms
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-
 @Component({
   selector: 'app-form',
   templateUrl: './form.page.html',
   styleUrls: ['./form.page.scss'],
 })
+
 export class FormPage implements OnInit {
   myForm: FormGroup; 
 
@@ -29,7 +29,7 @@ export class FormPage implements OnInit {
   constructor(
     private formService: FormService,
     private datePicker: DatePicker,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) { 
     this.myForm = this.formBuilder.group({
       studyID: '',
@@ -48,21 +48,6 @@ export class FormPage implements OnInit {
     this.showSex = this.formService.getShowSex();
   }
 
-  // This is to test if the datepicker works
-  showDate() {
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
-    }).then(
-      //this.myForm.setValue({
-        //dateOfBirth: ''
-      //}); 
-      date => console.log('Got date: ', date),
-      err => console.log('Error occurred while getting date: ', err)
-    );
-  }
-
   // Ideally, this function sets the dateOfBirth field in the form to whatever date the user inputs 
   // using the datepicker. However, it does not work.
   showDate2() {
@@ -76,6 +61,6 @@ export class FormPage implements OnInit {
         dateOfBirth: date
       })
     );
-  }
+    }
 
 }

@@ -10,43 +10,33 @@
 <ion-content fullscreen>
     <p *ngIf="showID || showName || showBirthday || showSex">Please enter the following information: </p>
 
+    <ion-item *ngIf="showID">
+        <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
+        <ion-input type="number"></ion-input>
+    </ion-item>
 
-    <form [formGroup]="myForm">
-        Form Data: {{ myForm.value | json }}
-        <ion-item *ngIf="showID">
-            <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
-            <ion-input formControlName="studyID" type="number"></ion-input>
-        </ion-item>
-    
-        <ion-item *ngIf="showName">
-            <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
-            <ion-input formControlName="name" type="text"></ion-input>
-        </ion-item>
-    
-        <ion-item *ngIf="showBirthday">
-            <ion-label position="stacked">Birthday</ion-label>
-            <ion-input formControlName="dateOfBirth" (click)="showDate2()">
-            </ion-input>
-        </ion-item>
-        
-        <ion-input formControlName="sex" radio-group *ngIf="showSex">
-            <ion-radio-group>
-                <ion-list-header>
-                    Sex
-                </ion-list-header>
-                <ion-item>
-                  <ion-label>Female</ion-label>
-                  <ion-radio value="female" name="sex"></ion-radio>
-                </ion-item>
-        
-                <ion-item>
-                  <ion-label>Male</ion-label>
-                  <ion-radio value="male" name="sex"></ion-radio>
-                </ion-item>
-            </ion-radio-group>
+    <ion-item *ngIf="showName">
+        <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
+        <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="showBirthday">
+        <ion-label position="stacked">Birthday</ion-label>
+        <ion-input (click)="showDate2()">
         </ion-input>
-          
-    </form>
+    </ion-item>
+    
+      <ion-list>
+          <ion-item>
+              <ion-label>Sex</ion-label>
+              <ion-select value="sex" interface="action-sheet">
+                <ion-select-option value="female">Female</ion-select-option>
+                <ion-select-option value="male">Male</ion-select-option>
+              </ion-select>
+            </ion-item>
+      </ion-list>
 
+      
+            
     <ion-button expand="block" color="medium" routerLink="/incr-instr">Start Session</ion-button>
 </ion-content>
