@@ -44,9 +44,9 @@ export class SettingsPage implements OnInit {
         {
           name: 'framework',
           options: [
-            { text: '1', value: '1' },
-            { text: '2', value: '2' },
-            { text: '3', value: '3' }
+            { text: '1', value: 1 },
+            { text: '2', value: 2 },
+            { text: '3', value: 3 }
           ]
         }
       ]
@@ -55,7 +55,7 @@ export class SettingsPage implements OnInit {
     picker.present();
     picker.onDidDismiss().then(async data => {
       let col = await picker.getColumn('framework');
-      this.runTotal = parseInt(col.options[col.selectedIndex].text, 10);
+      this.runTotal = col.options[col.selectedIndex].value;
       this.setTotal();
     });
   }
