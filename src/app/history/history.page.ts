@@ -13,7 +13,6 @@ export class HistoryPage implements OnInit {
   today: any;
   dateObject: any;
   dateObjects: Date[] = [];
-  zipcode = [{ num: "111" }, { num: "222" }, { num: "333" }, { num: "444" }];
   parsedData = [];
   // Currently, user data is hardcoded data in JSON format. Eventually this data will come from the database.
   // Parameters include studyID, date, sex, DOB, min/max frequency, and session run data.
@@ -84,17 +83,6 @@ export class HistoryPage implements OnInit {
   constructor() {
     var stringifiedData = JSON.stringify(this.userData);
     this.parsedData = JSON.parse(stringifiedData);
-    //console.log(this.parsedData);
-    // doing Date.now() returns a number, which can be piped without needing to create a Date object over it
-    //this.today = new Date();
-    //console.log(this.today.toString());
-    //this.dateObject = new Date('Fri Jul 19 2019 16:05:20 GMT-0700');
-    //this.dateObject = new Date(this.today.toString());
-    for (var i = 0; i < this.parsedData.length; i++) {
-        //console.log(this.parsedData[i].date.toString());
-        this.dateObjects.push(new Date(this.parsedData[i].date));
-    }
-    console.log(this.dateObjects);
    }
 
   ngOnInit() {

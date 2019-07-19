@@ -9,7 +9,7 @@ export class DummyHistoryPage implements OnInit {
   userData = [
     {
       "studyID": "12345",
-      "date": "2019-07-20 10:51:24 GMT-0700",
+      "date": "Thu Jul 18 2019 16:05:58 GMT-0700",
       "sex": "f",
       "dateOfBirth": "1987-01-02",
       "minHz": "25.0",
