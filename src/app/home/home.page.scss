@@ -4,14 +4,16 @@
 
 .white-box {
     width: 150px;
-    height: 150px;
+    height: 200px;
 }
 
 .name {
+    padding-top: 50px;
     text-align: center;
     font-size: 50px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .divider {
-   height: 2px;
+   height: 4px;
 }

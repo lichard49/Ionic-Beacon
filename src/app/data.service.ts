@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
-  studyID: string;
+  studyID: number;
   name: string;
   dateOfBirth: string;
   sex: string;
   minHz: number;
   maxHz: number;
+  runs: number;
   date: string;
   time: string;
   average: number;
@@ -18,15 +19,99 @@ export class DataService {
   notes: string;
 
   constructor() { 
-    this.studyID = '';
+    this.studyID = null;
     this.name = '';
     this.dateOfBirth = '';
     this.sex = '';
     this.minHz = 25.0;
     this.maxHz = 55.0;
+    this.runs = 2;
     this.date = '';
     this.time = '';
     this.average = 0.0;
     this.variance = 0.0;
   }
+
+  // setters
+  setStudyID(ID) {
+    this.studyID = ID;
+  }
+
+  setName(name) {
+    this.name = name;
+  }
+  
+  setDOB(DOB) {
+    this.dateOfBirth = DOB;
+  } 
+
+  setSex(s) {
+    this.sex = s;
+  }
+
+  setMinHZ(hz) {
+    this.minHz = hz;
+  }
+
+  setMaxHZ(hz) {
+    this.maxHz = hz;
+  }
+
+  setRuns(run) {
+    this.runs = run;
+  }
+
+  setDate(d) {
+    this.date = d;
+  }
+
+  setTime(t) {
+    this.time = t;
+  }
+
+  // getters
+  getStudyID() {
+    return this.studyID;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  getDOB() {
+    return this.dateOfBirth;
+  }
+
+  getSex() {
+    return this.sex;
+  }
+
+  getMinHZ() {
+    return this.minHz;
+  }
+
+  getMaxHZ() {
+    return this.maxHz;
+  }
+
+  getRuns() {
+    return this.runs;
+  }
+
+  getDate() {
+    return this.date;
+  }
+
+  getTime() {
+    return this.time;
+  }
+
+  getAverage() {
+    return this.average;
+  }
+
+  getVariance() {
+    return this.variance;
+  }
+
 }
