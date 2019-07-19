@@ -9,7 +9,7 @@ export class RunTrackerService {
   constructor() {
     // starts out as 1 since starting a session is the "first run"
     this.counter = 1;
-    // change this depending on what the user puts in
+    // change this depending on what the user puts in, this is the default value
     this.total = 2; 
   }
 

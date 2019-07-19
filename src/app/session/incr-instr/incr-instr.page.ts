@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import {AlertController} from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RunTrackerService } from '../../run-tracker.service';
+import { BackpageTrackerService } from '../../backpage-tracker.service';
 
 @Component({
   selector: 'app-incr-instr',
@@ -14,13 +15,16 @@ import { RunTrackerService } from '../../run-tracker.service';
 export class IncrInstrPage implements OnInit {
   controller = document.querySelector('ion-alert-controller');
   button = document.querySelector('ion-button');
+  flag: boolean;
   constructor(
     public alertController: AlertController,
     private router: Router,
-    private runTracker: RunTrackerService
+    private runTracker: RunTrackerService,
+    private bkpgTracker: BackpageTrackerService
   ) { }
 
   ngOnInit() {
+    this.flag = this.bkpgTracker.getFlag();
   }
 
   async presentAlertConfirm() {
@@ -40,8 +44,10 @@ export class IncrInstrPage implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
 
+  changeFlag() {
+    this.bkpgTracker.setTrue();
+  }
 }

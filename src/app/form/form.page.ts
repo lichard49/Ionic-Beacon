@@ -10,6 +10,7 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 // testing out forms
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { BackpageTrackerService } from '../backpage-tracker.service';
 
 @Component({
   selector: 'app-form',
@@ -30,6 +31,7 @@ export class FormPage implements OnInit {
     private formService: FormService,
     private datePicker: DatePicker,
     private formBuilder: FormBuilder,
+    private bkpgTracker: BackpageTrackerService
   ) { 
     this.myForm = this.formBuilder.group({
       studyID: '',
@@ -61,6 +63,10 @@ export class FormPage implements OnInit {
         dateOfBirth: date
       })
     );
+    }
+
+    changeFlag() {
+      this.bkpgTracker.setFalse();
     }
 
 }

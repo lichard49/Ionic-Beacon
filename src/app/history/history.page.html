@@ -9,17 +9,18 @@
 
 <ion-content>
   <ion-col>
-    <div class="table" *ngFor="let data of parsedData"> 
+    <div class="table" *ngFor="let dateObj of dateObjects; let i=index"> 
         <ion-item-divider></ion-item-divider><br>
         <div routerLink="/dummy-history">
-            Study ID: #{{ data.studyID }} 
+            Study ID: #{{ parsedData[i].studyID }} 
             <br>
             <div class="arrow">
                 <ion-icon name="play"></ion-icon>
             </div>
             <br>
+            Date: {{ dateObj | date:'fullDate' }} <br>
             <!-- <ion-row>
-                {{ data.date | date: 'longDate' }} 
+                {{ data.date | date: ‘H:mm’ }} 
                 {{ data.date | date: 'shortTime' }}
             </ion-row> -->
         </div>

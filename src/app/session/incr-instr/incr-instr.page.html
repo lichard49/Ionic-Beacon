@@ -1,7 +1,15 @@
 <ion-header>
     <ion-toolbar>
         <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>  <!-- goes to the homepage -->  
+          <!-- 
+            div *ngIf="flag == false">
+              <button routerLink="/form">Back</button>   
+            </div>
+            <div *ngIf="flag == true">
+                <button routerLink="/run-complete">Back</button>  
+            </div>
+          -->
+          <ion-back-button></ion-back-button>
         </ion-buttons>
       <ion-title style="padding-left: 60px;">instructions</ion-title>
     </ion-toolbar>
@@ -11,5 +19,5 @@
 <p class="instructions">Press the grey shape on the next screen whenever the light appears to be fused. <br><br> 
 You may end the session anytime by pressing the button at the top of the next screen. </p>
 <ion-item-divider></ion-item-divider>
-<ion-button expand="block" color="medium" routerLink="/incr-test">Begin</ion-button>
+<ion-button expand="block" color="medium" (click)="changeFlag()" routerLink="/incr-test">Begin</ion-button>
 </ion-content>
