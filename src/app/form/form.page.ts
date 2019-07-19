@@ -5,12 +5,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../form.service';
-// testing this datepicker
 import { DatePicker } from '@ionic-native/date-picker/ngx';
-
-// testing out forms
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { BackpageTrackerService } from '../backpage-tracker.service';
 
 import { DataService } from '../data.service';
 
@@ -21,8 +16,6 @@ import { DataService } from '../data.service';
 })
 
 export class FormPage implements OnInit {
-  myForm: FormGroup; 
-
   // used to determine if we display "select" as the text in the button or the actual date the user has selected
   // false -> "select"
   // true -> the date the user selects as their birthday
@@ -42,8 +35,6 @@ export class FormPage implements OnInit {
   constructor(
     private formService: FormService,
     private datePicker: DatePicker,
-    private formBuilder: FormBuilder,
-    private bkpgTracker: BackpageTrackerService,
     private dataService: DataService
   ) { }
 
@@ -80,5 +71,10 @@ export class FormPage implements OnInit {
 
     changeSex() {
       this.dataService.setSex(this.sex);
+    }
+
+    recordDateTime() {
+      this.dataService.setDate(new Date());
+      console.log(this.dataService.getDate());
     }
 }

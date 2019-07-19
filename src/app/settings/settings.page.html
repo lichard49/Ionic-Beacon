@@ -17,12 +17,18 @@
           <ion-button slot="end" fill="clear" (click)="showBasicPicker()">Change</ion-button>
           <ion-label color="primary">{{ runTotal }}</ion-label>
       </ion-item>
-      <!-- 
-          <ion-item>
-          <ion-label>Number of Runs</ion-label>
-          <ion-input type="number" [(ngModel)]="total" (ionChange)="setTotal()"></ion-input>
-        </ion-item>
-      -->
+      
+      <ion-item>
+          <ion-label>Minimum Frequency (Hz)</ion-label>
+          <ion-input [(ngModel)]="min" (ionChange)="setMin()"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Maximum Frequency (Hz)</ion-label>
+          <ion-input [(ngModel)]="max" (ionChange)="setMax()"></ion-input>
+      </ion-item>
+
+      <h6 style="text-align: center">Input Fields Displayed in Form</h6> 
         <ion-item>
           <ion-label>Study ID</ion-label>
           <ion-toggle [checked]="showID" (ionChange)="changeShowID()"></ion-toggle>

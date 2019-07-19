@@ -12,10 +12,10 @@
   Examples: <i>A person walked in during the session, got distracted during one of the runs. </i>
   <br>
   <div class="notesBox">
-      <ion-textarea placeholder="Notes..."></ion-textarea>
+      <ion-textarea placeholder="Notes..." [(ngModel)]="notes"></ion-textarea>
   </div>
 </div>
 <div class="rightAlign">
-    <ion-button color="medium" routerLink="/summary">Next</ion-button>
+    <ion-button color="medium" routerLink="/summary" (click)="updateNotes()">Next</ion-button>
 </div>
 </ion-content>

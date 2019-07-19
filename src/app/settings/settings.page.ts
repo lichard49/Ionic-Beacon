@@ -8,6 +8,9 @@ import { RunTrackerService } from '../run-tracker.service';
 // for the picker
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
+
+import { DataService } from '../data.service';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
@@ -21,12 +24,18 @@ export class SettingsPage implements OnInit {
   showBirthday: boolean;
   showSex: boolean;
 
+  min: number;
+  max: number;
+
   constructor(
     private formService: FormService,
     private runTracker: RunTrackerService,
-    private pickerCtrl: PickerController
+    private pickerCtrl: PickerController,
+    private dataService: DataService
   ) { 
     this.runTotal = runTracker.getTotal();
+    this.min = dataService.getMinHZ();
+    this.max = dataService.getMaxHZ();
   }
 
   async showBasicPicker() {
@@ -69,7 +78,7 @@ export class SettingsPage implements OnInit {
 
   setTotal() {
     this.runTracker.setTotal(this.runTotal);
-    console.log(this.runTotal);
+    this.dataService.setRuns(this.runTotal);
   }
 
   ngOnInit() {
@@ -93,5 +102,13 @@ export class SettingsPage implements OnInit {
 
   changeShowSex() {
     this.formService.changeShowSex();
+  }
+
+  setMin() {
+    this.dataService.setMinHZ(this.min);
+  }
+
+  setMax() {
+    this.dataService.setMaxHZ(this.max);
   }
 }

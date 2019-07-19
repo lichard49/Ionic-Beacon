@@ -12,7 +12,6 @@ export class DataService {
   maxHz: number;
   runs: number;
   date: string;
-  time: string;
   average: number;
   variance: number;
   session: any;
@@ -27,7 +26,6 @@ export class DataService {
     this.maxHz = 55.0;
     this.runs = 2;
     this.date = '';
-    this.time = '';
     this.average = 0.0;
     this.variance = 0.0;
   }
@@ -65,8 +63,8 @@ export class DataService {
     this.date = d;
   }
 
-  setTime(t) {
-    this.time = t;
+  setNotes(no) {
+    this.notes = no;
   }
 
   // getters
@@ -102,8 +100,8 @@ export class DataService {
     return this.date;
   }
 
-  getTime() {
-    return this.time;
+  getSession() {
+    return this.session;
   }
 
   getAverage() {
@@ -114,4 +112,7 @@ export class DataService {
     return this.variance;
   }
 
+  getNotes() {
+    return this.notes;
+  }
 }
