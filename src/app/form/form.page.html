@@ -12,12 +12,18 @@
 
     <ion-item *ngIf="showID">
         <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
-        <ion-input type="number" [(ngModel)]="studyID" (ionChange)="changeStudyID()"></ion-input>
+        <div class="box">
+            <ion-input type="number" [(ngModel)]="studyID" (ionChange)="changeStudyID()"></ion-input>
+        </div>
+        {{ studyID }}
     </ion-item>
 
     <ion-item *ngIf="showName">
         <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
-        <ion-input type="text" [(ngModel)]="name" (ionChange)="changeName()"></ion-input>
+        <div class="box">
+            <ion-input type="text" [(ngModel)]="name" (ionChange)="changeName()"></ion-input>
+        </div>
+        {{ name }}
     </ion-item>
 
     <ion-item *ngIf="showBirthday">
