@@ -3,14 +3,16 @@
         <ion-buttons slot="start">
             <ion-back-button></ion-back-button>      
         </ion-buttons>
-        <ion-title style="padding-left: 60px;">history</ion-title>
+        <ion-title style="padding-left: 60px;">beacon</ion-title>
       </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <h1 style="text-align: center">History</h1>
   <ion-col>
     <div class="table" *ngFor="let data of parsedData"> 
-        <ion-item-divider></ion-item-divider><br>
+        <br>
+        <div class="colSep"></div>
         <div routerLink="/dummy-history">
             Study ID: #{{ data.studyID }} 
             <br>
@@ -24,8 +26,9 @@
             </ion-row>
         </div>
     </div>
+    
     <div class="table">
-      <ion-item-divider></ion-item-divider>
+        <div class="colEnd"></div>
     </div>
   </ion-col>
 </ion-content>

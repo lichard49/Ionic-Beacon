@@ -3,7 +3,7 @@
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>      
       </ion-buttons>
-      <ion-title style="padding-left: 100px;">data</ion-title>
+      <ion-title style="padding-left: 100px;">beacon</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -26,7 +26,7 @@
         </ion-input>
     </ion-item>
     
-      <ion-list>
+      <ion-list *ngIf="showSex">
           <ion-item>
               <ion-label>Sex</ion-label>
               <ion-select value="sex" interface="action-sheet">
@@ -36,7 +36,5 @@
             </ion-item>
       </ion-list>
 
-      
-            
     <ion-button expand="block" color="medium" (click)="changeFlag()" routerLink="/incr-instr">Start Session</ion-button>
 </ion-content>
