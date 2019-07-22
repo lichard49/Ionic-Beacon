@@ -15,6 +15,9 @@ Also download Angular using `npm install -g @angular/cli`.
 ## Plugins
 This app uses the native datepicker, so you'll need to install the datepicker plugin. Run `ionic cordova plugin add cordova-plugin-datepicker` and then `npm install @ionic-native/date-picker`.
 
+Work in Progress:
+Install the Cordova Bluetooth plugin by running `cordova plugin add cordova-plugin-bluetoothle`.  iOS requires a description in the plist file, so you'll also need to run `cordova plugin add cordova-plugin-bluetooth-peripheral-usage-description --variable TEXT="connect to Arduino"`. 
+
 ## Server
 After running `ionic serve` in the project folder, navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
 
