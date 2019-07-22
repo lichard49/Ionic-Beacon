@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'decr-test', loadChildren: './session/decr-test/decr-test.module#DecrTestPageModule' },
   { path: 'run-complete', loadChildren: './session/run-complete/run-complete.module#RunCompletePageModule' },
   { path: 'notes', loadChildren: './session/notes/notes.module#NotesPageModule' },
-  { path: 'summary', loadChildren: './session/summary/summary.module#SummaryPageModule' }
+  { path: 'summary', loadChildren: './session/summary/summary.module#SummaryPageModule' },
+  { path: 'bluetooth', loadChildren: './bluetooth/bluetooth.module#BluetoothPageModule' }
 ];
 
 @NgModule({
