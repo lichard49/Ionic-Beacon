@@ -21,6 +21,8 @@ For programming the Arduino, you'll need to download the Arduino IDE from https:
 ## Server
 After running `ionic serve` in the project folder, navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
 
+If this is unsuccessful, you may also need to install an Angular dependency by running `npm install --save-dev @angular-devkit/build-angular`.
+
 ## Configure Platforms
 Before displaying the app, you'll need to download whichever platform you want to use to display the app. For iOS, run 
 `ionic cordova platform add ios` in Terminal. Run `ionic cordova platform add android` for Android.
