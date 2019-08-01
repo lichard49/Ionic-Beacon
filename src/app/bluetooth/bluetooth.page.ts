@@ -10,9 +10,7 @@ import { DataService } from '../data.service';
 // show redo button once a run is completed
 // end session should always be there
 // have a progress bar up top, use the same screen
-const device_ID = 'C1E746FB-C055-A37D-D7DA-009CF1E61837';
-// for beacon: 'C1E746FB-C055-A37D-D7DA-009CF1E61837';
-// for flicker: '887F55AA-4AA6-F381-CD4B-8CBE4EE11961';
+
 const service_ID = '2220';
 const characteristic_ID = '2222';
 
@@ -27,6 +25,9 @@ const delay = 2000;
 })
 
 export class BluetoothPage {
+// for beacon: 'C1E746FB-C055-A37D-D7DA-009CF1E61837';
+// for flicker: '887F55AA-4AA6-F381-CD4B-8CBE4EE11961';
+  device_ID = '887F55AA-4AA6-F381-CD4B-8CBE4EE11961';
   incr: boolean = true;
   incrTest: boolean = true;
   decrTest: boolean = false;
@@ -50,7 +51,31 @@ export class BluetoothPage {
     this.decrTestResult = sessionServ.getDecr();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //this.device_ID = this.dataService.getDeviceID();
+    console.log("DEVICE ID IS: " + this.device_ID);
+    // this.device_ID = '925DAB53-A919-FC0F-6536-92CE7AF94BD8';
+    // // existing bug
+    // if (this.device_ID != null) {
+    //   console.log('ENTERED IF STATEMENT');
+    //   BLE.startScanWithOptions([service_ID], {
+    //     reportDuplicates: false
+    //   }).subscribe(
+    //     device => console.log("found a device!"), 
+    //     error => this.scanError(error)
+    //   );
+    //   BLE.autoConnect(this.device_ID,        //device_ID, 
+    //     function(peripheralData) {
+    //       console.log(peripheralData);
+    //       console.log('Success! CONNECTED.');
+    //       document.getElementById("button").innerHTML = "Connected!";
+    //     },
+    //     function() {
+    //       document.getElementById("button").innerHTML = "Unable to connect.";
+    //       console.log('Error! Unable to connect.');
+    //     });
+    // }
+  }
 
   startIncr(ionicButton) {
     this.incrTest = false;
@@ -105,6 +130,7 @@ export class BluetoothPage {
  }
 
  displayData() {
+   // move the results page to its own page 
    this.incrTestResult = this.sessionServ.getIncr();
    this.decrTestResult = this.sessionServ.getDecr();
  }
@@ -163,7 +189,7 @@ export class BluetoothPage {
   }
 
   autoConnect(ionicButton) {
-    BLE.autoConnect(this.dataService.getDeviceID(),        //device_ID, 
+    BLE.autoConnect(this.device_ID,        //device_ID, 
     function(peripheralData) {
       console.log(peripheralData);
       console.log('Success! CONNECTED.');
@@ -176,20 +202,10 @@ export class BluetoothPage {
     });
   }
 
-  sendTestData() {
-    var data = new Uint16Array(1);
-    data[0] = 500;
-    //  cast the SharedArrayBuffer to an ArrayBuffer for compatability purposes
-    BLE.write(device_ID, service_ID, characteristic_ID, data.buffer as ArrayBuffer).then(
-      () => console.log("Successfully wrote data. " + data),
-      e => console.log("Failed to write. " + e)
-    );
-   }
-
    sendFrequencyData(num) {
       var data = new Uint16Array(1);
       data[0] = num;
-      BLE.write(device_ID, service_ID, characteristic_ID, data.buffer as ArrayBuffer).then(
+      BLE.write(this.device_ID, service_ID, characteristic_ID, data.buffer as ArrayBuffer).then(
         () => console.log("Successfully wrote data. " + data),
         e => console.log("Failed to write. " + e)
       );

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>      
+      </ion-buttons>
+    <ion-title>run</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br>
+    <ion-progress-bar color="primary" value="{{ progress }}"></ion-progress-bar>
+    <p style="text-align: center">Run {{ currentRun }} / {{ runTotal }} </p>
+     <div *ngIf="incr">
+       <ion-row>
+         <ion-col style="text-align: center" *ngIf="incrTest">
+            <ion-button #second (click)="startIncr(second)" color="success" class="circleButton">
+                Increasing Test
+            </ion-button>
+          </ion-col>
+        </ion-row>
+          
+        <ion-row>
+          <ion-col style="text-align: center" *ngIf="incrTest == false">
+              <ion-button #second (click)="stopIncr(second)" color="success" class="circleButton">
+                  Increasing Test
+              </ion-button>
+          </ion-col>
+        </ion-row>
+     </div>
+  
+      <ion-row *ngIf="decrTest">
+        <ion-col style="text-align: center">
+            <ion-button #second (click)="stopDecr(second)" color="warning" class="circleButton">
+                Decreasing Test
+            </ion-button>
+        </ion-col>
+      </ion-row>
+        
+  
+     <p *ngIf="incr"> Increasing: {{ values / 10 }} Hz </p>
+     <p *ngIf="decrTest && sessionEnded == false">Decreasing: {{ values / 10 }} Hz</p>
+    
+     <!-- DEBUGGING ONLY -->
+     <p *ngIf="sessionEnded">Session Results: <br>
+    Increasing: {{ incrTestResult / 10 }} Hz <br>
+    Decreasing: {{ decrTestResult / 10 }} Hz
+    </p>
+
+    <ion-button *ngIf="showNextRunButton" (click)="nextRun(second)">Next</ion-button>
+</ion-content>

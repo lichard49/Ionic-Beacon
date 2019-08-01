@@ -78,7 +78,7 @@ export class SettingsPage implements OnInit {
 
   setTotal() {
     this.runTracker.setTotal(this.runTotal);
-    this.dataService.setRuns(this.runTotal);
+    this.dataService.setRunTotal(this.runTotal);
   }
 
   ngOnInit() {

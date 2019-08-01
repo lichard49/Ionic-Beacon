@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'notes', loadChildren: './session/notes/notes.module#NotesPageModule' },
   { path: 'summary', loadChildren: './session/summary/summary.module#SummaryPageModule' },
   { path: 'bluetooth', loadChildren: './bluetooth/bluetooth.module#BluetoothPageModule' },
+  { path: 'run', loadChildren: './run/run.module#RunPageModule' },
 ];
 
 @NgModule({

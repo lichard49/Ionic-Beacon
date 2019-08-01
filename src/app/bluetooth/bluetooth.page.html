@@ -13,8 +13,8 @@
   </ion-button>
    <ion-list> 
     <div *ngFor="let device of devices">
-      <p>Found: {{ device.name || 'Unnamed' }} </p>
-      <p>Found: {{ device.id }} </p>
+      <p>Found: {{ device.name || 'Unnamed' }} 
+      {{ device.id }} </p>
     </div>  
    </ion-list> 
 
@@ -38,7 +38,7 @@
 
     <ion-row *ngIf="decrTest">
       <ion-col style="text-align: center">
-          <ion-button (click)="stopDecr()" color="warning" class="circleButton">
+          <ion-button #second (click)="stopDecr(second)" color="warning" class="circleButton">
               Decreasing Test
           </ion-button>
       </ion-col>

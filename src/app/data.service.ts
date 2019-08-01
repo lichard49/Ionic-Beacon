@@ -13,7 +13,8 @@ export class DataService {
   sex: string;
   minHz: number;
   maxHz: number;
-  runs: number;
+  runs: any[];
+  runTotal: number = 2;
   date: string;
   average: number;
   variance: number;
@@ -27,7 +28,7 @@ export class DataService {
     this.sex = '';
     this.minHz = 25.0;
     this.maxHz = 55.0;
-    this.runs = 2;
+    this.runs = [];
     this.date = '';
     this.average = 0.0;
     this.variance = 0.0;
@@ -38,6 +39,9 @@ export class DataService {
     this.studyID = ID;
   }
 
+  setRunTotal(total) {
+    this.runTotal = total;
+  }
   // for beacon
   setDeviceID(id) {
     this.device_ID = id;
@@ -63,8 +67,8 @@ export class DataService {
     this.maxHz = hz;
   }
 
-  setRuns(run) {
-    this.runs = run;
+  addRun(run) {
+    this.runs.push(run);
   }
 
   setDate(d) {
@@ -90,6 +94,10 @@ export class DataService {
 
   getSex() {
     return this.sex;
+  }
+
+  getRunTotal() {
+    return this.runTotal;
   }
 
   getMinHZ() {
