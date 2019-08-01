@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class DataService {
+  // for finding Beacon
+  device_ID: string;
+
   studyID: number;
   name: string;
   dateOfBirth: string;
@@ -33,6 +36,11 @@ export class DataService {
   // setters
   setStudyID(ID) {
     this.studyID = ID;
+  }
+
+  // for beacon
+  setDeviceID(id) {
+    this.device_ID = id;
   }
 
   setName(name) {
@@ -114,5 +122,9 @@ export class DataService {
 
   getNotes() {
     return this.notes;
+  }
+
+  getDeviceID() {
+    return this.device_ID;
   }
 }
