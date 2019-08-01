@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>summary</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 style="text-align: center">Session Summary</h1>
+
+  <div class="results">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ascending: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Descending:
+      <div *ngFor="let result of results; let i = index">
+        Run {{ i + 1 }}: &nbsp;&nbsp;&nbsp;&nbsp;
+        {{ result.incr / 10 }} Hz 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{ result.decr / 10 }} Hz
+        <br>
+      </div>
+  </div>
+  
+  <ion-button routerLink="/home" style="float: right">Done</ion-button>
+
+</ion-content>

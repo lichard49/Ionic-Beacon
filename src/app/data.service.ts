@@ -42,6 +42,10 @@ export class DataService {
   setRunTotal(total) {
     this.runTotal = total;
   }
+
+  setRuns(arr) {
+    this.runs = arr;
+  }
   // for beacon
   setDeviceID(id) {
     this.device_ID = id;

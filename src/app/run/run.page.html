@@ -47,5 +47,6 @@
     Decreasing: {{ decrTestResult / 10 }} Hz
     </p>
 
-    <ion-button *ngIf="showNextRunButton" (click)="nextRun(second)">Next</ion-button>
+    <ion-button *ngIf="showNextRunButton && currentRun < runTotal" (click)="nextRun(second)">Next</ion-button>
+    <ion-button *ngIf="showFinishButton && currentRun == runTotal" routerLink="/summary" (click)="stopSession()">Finish</ion-button>
 </ion-content>

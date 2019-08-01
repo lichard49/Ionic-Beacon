@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { BLE } from '@ionic-native/ble';
 import { SessionDataService } from '../session-data.service';
 import { DataService } from '../data.service';
+import { RunComponent } from './run.component';
 
 const service_ID = '2220';
 const characteristic_ID = '2222';
@@ -29,6 +30,7 @@ export class RunPage implements OnInit {
   statusMessage: string;
   sessionEnded: boolean = false;
   showNextRunButton: boolean = false;
+  showFinishButton: boolean = false;
 
   currentRun: number  = 1;
   runTotal: number;
@@ -60,7 +62,7 @@ export class RunPage implements OnInit {
       if (this.values == max_hz) {
         this.stopIncr(ionicButton);
       } else {
-        this.sendFrequencyData(this.values);
+        // this.sendFrequencyData(this.values);
         this.values++;
         console.log(this.values);
       }
@@ -73,7 +75,6 @@ export class RunPage implements OnInit {
     // stops the timer
     clearInterval(this.interval);
     ionicButton.color = 'medium';
-    // does not work for some reason
    setTimeout(() => {
      // starts the descending portion after 2 seconds
      this.incr = false;
@@ -83,7 +84,7 @@ export class RunPage implements OnInit {
        if (this.values == min_hz) {
          this.stopDecr(ionicButton);
        } else {
-         this.sendFrequencyData(this.values);
+         // this.sendFrequencyData(this.values);
          this.values--;
          console.log(this.values);
          ionicButton.color = "success";
@@ -101,6 +102,9 @@ export class RunPage implements OnInit {
     this.sessionEnded = true;
     this.displayData();
     this.showNextRunButton = true;
+
+    this.dataService.addRun(new RunComponent(this.incrTestResult, this.decrTestResult));
+    this.showFinishButton = true;
    }
 
    nextRun(ionicButton) {
@@ -111,6 +115,10 @@ export class RunPage implements OnInit {
     this.sessionEnded = false;
     this.values = min_hz;
     this.startIncr(ionicButton);
+   }
+
+   stopSession() {
+    clearInterval(this.interval);
    }
 
   /**
