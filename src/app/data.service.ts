@@ -75,12 +75,20 @@ export class DataService {
     this.runs.push(run);
   }
 
+  addRunAtIndex(index, run) {
+    this.runs.splice(index, 0, run);
+  }
+
   setDate(d) {
     this.date = d;
   }
 
   setNotes(no) {
     this.notes = no;
+  }
+
+  getRun(index) {
+    return this.runs[index];
   }
 
   // getters

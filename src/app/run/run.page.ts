@@ -8,8 +8,6 @@ import { RunComponent } from './run.component';
 const service_ID = '2220';
 const characteristic_ID = '2222';
 
-const min_hz = 250; // 25.0 Hz
-const max_hz = 550; // 55.0 Hz
 const delay = 2000;
 
 @Component({
@@ -24,7 +22,10 @@ export class RunPage implements OnInit {
   incr: boolean = true;
   incrTest: boolean = true;
   decrTest: boolean = false;
-  values: number = min_hz;
+
+  min_hz: number;
+  max_hz: number;
+  values: number;
   interval;
   devices: any[] = [];
   statusMessage: string;
@@ -32,7 +33,9 @@ export class RunPage implements OnInit {
   showNextRunButton: boolean = false;
   showFinishButton: boolean = false;
 
-  currentRun: number  = 1;
+  redoFlag: boolean = false;
+
+  currentRun: number = 1;
   runTotal: number;
 
   incrTestResult: number;
@@ -47,19 +50,24 @@ export class RunPage implements OnInit {
     this.incrTestResult = sessionServ.getIncr();
     this.decrTestResult = sessionServ.getDecr();
     this.runTotal = dataService.getRunTotal();
+
+    this.min_hz = dataService.getMinHZ() * 10;
+    this.max_hz = dataService.getMaxHZ() * 10;
+    this.values = this.min_hz;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   startIncr(ionicButton) {
+    this.showFinishButton = false;
+    this.showNextRunButton = false;
     this.incrTest = false;
     // start at minHz, increase at step rate until user input (or max hz)
     // 0.1 Hz / 0.2 Sec
     // 250 -> 251 in 0.2 seconds
     // 250 -> 255 in 1 second
     this.interval = setInterval(() => {
-      if (this.values == max_hz) {
+      if (this.values == this.max_hz) {
         this.stopIncr(ionicButton);
       } else {
         // this.sendFrequencyData(this.values);
@@ -70,41 +78,51 @@ export class RunPage implements OnInit {
  }
 
   stopIncr(ionicButton) {
-    // need to record this.values and put into a service
     this.sessionServ.setIncr(this.values);
     // stops the timer
     clearInterval(this.interval);
     ionicButton.color = 'medium';
-   setTimeout(() => {
-     // starts the descending portion after 2 seconds
-     this.incr = false;
-     this.decrTest = true;
-     this.values = max_hz;
-     this.interval = setInterval(() => {
-       if (this.values == min_hz) {
-         this.stopDecr(ionicButton);
-       } else {
-         // this.sendFrequencyData(this.values);
-         this.values--;
-         console.log(this.values);
-         ionicButton.color = "success";
-       }
-     }, 200)
-   }, delay);
+    setTimeout(() => {
+      // starts the descending portion after 2 seconds
+      this.incr = false;
+      this.decrTest = true;
+      this.values = this.max_hz;
+      this.interval = setInterval(() => {
+        if (this.values == this.min_hz) {
+          this.stopDecr(ionicButton);
+        } else {
+          // this.sendFrequencyData(this.values);
+          this.values--;
+          console.log(this.values);
+          ionicButton.color = "success";
+        }
+      }, 200)
+    }, delay);
   }
 
   stopDecr(ionicButton) {
     this.sessionServ.setDecr(this.values);
-    this.progress += (1 / this.runTotal);
+    if (this.redoFlag == false) {
+      this.progress += (1 / this.runTotal);
+    }
     // stops the timer
     clearInterval(this.interval);
     ionicButton.color = 'medium';
     this.sessionEnded = true;
     this.displayData();
     this.showNextRunButton = true;
-
-    this.dataService.addRun(new RunComponent(this.incrTestResult, this.decrTestResult));
     this.showFinishButton = true;
+
+    if (this.redoFlag == true) {
+      var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
+      runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
+    } else {
+      this.dataService.addRun(
+        [ new RunComponent(this.incrTestResult, this.decrTestResult) ]
+      );
+    }
+    
+    console.log("Current runs after " + this.currentRun + " run: " + this.dataService.getRuns());
    }
 
    nextRun(ionicButton) {
@@ -113,12 +131,29 @@ export class RunPage implements OnInit {
     this.incrTest = true;
     this.decrTest = false;
     this.sessionEnded = false;
-    this.values = min_hz;
+    this.values = this.min_hz;
     this.startIncr(ionicButton);
+    this.redoFlag = false;
+   }
+
+   redoRun(ionicButton) {
+    this.incr = true;
+    this.incrTest = true;
+    this.decrTest = false;
+    this.sessionEnded = false;
+    this.values = this.min_hz;
+    this.startIncr(ionicButton);
+    this.redoFlag = true;
+    console.log("In redo run, the current run is: " + this.currentRun);
+
+    // var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
+    // console.log(runsAtIndex);
+    // runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
    }
 
    stopSession() {
     clearInterval(this.interval);
+    console.log(this.dataService.getRuns());
    }
 
   /**
@@ -137,7 +172,7 @@ export class RunPage implements OnInit {
     data[0] = num;
     BLE.write(this.device_ID, service_ID, characteristic_ID, data.buffer as ArrayBuffer).then(
       () => console.log("Successfully wrote data. " + data),
-      e => console.log("Failed to write. " + e)
+      e => console.log("Failed to write. " + e) 
     );
  }
 

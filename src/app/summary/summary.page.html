@@ -9,15 +9,28 @@
 
   <div class="results">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ascending: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Descending:
-      <div *ngFor="let result of results; let i = index">
-        Run {{ i + 1 }}: &nbsp;&nbsp;&nbsp;&nbsp;
-        {{ result.incr / 10 }} Hz 
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        {{ result.decr / 10 }} Hz
-        <br>
-      </div>
+     <!-- <div *ngFor="let dummyResult of dummyResults; let i = index">
+       Run {{ i + 1 }}:
+       <div *ngFor="let subResult of dummyResult; let j = index">
+         <div *ngIf="j == 0">
+           Increasing: {{ subResult.incr }}
+           Decreasing: {{ subResult.decr }}
+         </div>
+       </div>
+     </div> -->
+      
+     <div *ngFor="let result of results; let i = index">
+       Run {{ i + 1 }}:
+       <div *ngFor="let sub of result; let j = index">
+         <div *ngIf="j == 0">
+            {{ sub.incr / 10 }} 
+            {{ sub.decr / 10 }}
+         </div>
+        </div>
+     </div>
+
+      <ion-button routerLink="/home" style="float: right" (click)="clearRuns()">Done</ion-button>
   </div>
   
-  <ion-button routerLink="/home" style="float: right">Done</ion-button>
 
 </ion-content>
