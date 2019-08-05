@@ -8,26 +8,17 @@
   <h1 style="text-align: center">Session Summary</h1>
 
   <div class="results">
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ascending: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Descending:
-     <!-- <div *ngFor="let dummyResult of dummyResults; let i = index">
-       Run {{ i + 1 }}:
-       <div *ngFor="let subResult of dummyResult; let j = index">
-         <div *ngIf="j == 0">
-           Increasing: {{ subResult.incr }}
-           Decreasing: {{ subResult.decr }}
-         </div>
-       </div>
-     </div> -->
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ascending &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Descending
       
      <div *ngFor="let result of results; let i = index">
-       Run {{ i + 1 }}:
-       <div *ngFor="let sub of result; let j = index">
-         <div *ngIf="j == 0">
-            {{ sub.incr / 10 }} 
+       Run {{ i + 1 }}: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <div *ngFor="let sub of result; let j = index" style="display: inline">
+         <div *ngIf="j == 0"  style="display: inline">
+            {{ sub.incr / 10 }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             {{ sub.decr / 10 }}
          </div>
         </div>
-     </div>
+      </div>
 
       <ion-button routerLink="/home" style="float: right" (click)="clearRuns()">Done</ion-button>
   </div>

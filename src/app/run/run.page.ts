@@ -101,27 +101,30 @@ export class RunPage implements OnInit {
   }
 
   stopDecr(ionicButton) {
-    this.sessionServ.setDecr(this.values);
-    if (this.redoFlag == false) {
-      this.progress += (1 / this.runTotal);
+    console.log("session ended value is: " + this.sessionEnded);
+    if (this.sessionEnded == false) {
+      this.sessionEnded = true;
+      this.sessionServ.setDecr(this.values);
+      if (this.redoFlag == false) {
+        this.progress += (1 / this.runTotal);
+      }
+      // stops the timer
+      clearInterval(this.interval);
+      ionicButton.color = 'medium';
+      this.displayData();
+      this.showNextRunButton = true;
+      this.showFinishButton = true;
+      if (this.redoFlag == true) {
+        var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
+        runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
+      } else {
+        this.dataService.addRun(
+          [ new RunComponent(this.incrTestResult, this.decrTestResult) ]
+        );
+      }
+      console.log("session ended value is after entering the if check: " + this.sessionEnded);
     }
-    // stops the timer
-    clearInterval(this.interval);
-    ionicButton.color = 'medium';
-    this.sessionEnded = true;
-    this.displayData();
-    this.showNextRunButton = true;
-    this.showFinishButton = true;
-
-    if (this.redoFlag == true) {
-      var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
-      runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
-    } else {
-      this.dataService.addRun(
-        [ new RunComponent(this.incrTestResult, this.decrTestResult) ]
-      );
-    }
-    
+    // debugging
     console.log("Current runs after " + this.currentRun + " run: " + this.dataService.getRuns());
    }
 
