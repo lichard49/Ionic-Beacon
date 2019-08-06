@@ -46,7 +46,6 @@ export class RunPage implements OnInit {
 
   constructor(public navCtrl: NavController, 
     // an Angular service
-    private ngZone: NgZone,
     private sessionServ: SessionDataService,
     private dataService: DataService,
     private formServ: FormService,
@@ -61,6 +60,9 @@ export class RunPage implements OnInit {
     this.max_hz = dataService.getMaxHZ() * 10;
     this.values = this.min_hz;
     this.quickplayMode = formServ.getQuickplay();
+
+    // testing out if we can get the correct device ID from the service
+    this.device_ID = dataService.getDeviceID();
 
     // in quickplay mode, a user only has to go through 1 run
     if (this.quickplayMode == true) {
@@ -206,7 +208,6 @@ export class RunPage implements OnInit {
         }
       ]
     });
-
     await alert.present();
   }
 
