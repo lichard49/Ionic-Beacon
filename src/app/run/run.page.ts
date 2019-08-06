@@ -1,9 +1,11 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { BLE } from '@ionic-native/ble';
 import { SessionDataService } from '../session-data.service';
 import { DataService } from '../data.service';
 import { RunComponent } from './run.component';
+import { FormService } from '../form.service';
+import { Router } from '@angular/router';
 
 const service_ID = '2220';
 const characteristic_ID = '2222';
@@ -40,12 +42,16 @@ export class RunPage implements OnInit {
 
   incrTestResult: number;
   decrTestResult: number;
+  quickplayMode: boolean;
 
   constructor(public navCtrl: NavController, 
     // an Angular service
     private ngZone: NgZone,
     private sessionServ: SessionDataService,
-    private dataService: DataService
+    private dataService: DataService,
+    private formServ: FormService,
+    public alertController: AlertController,
+    private router: Router
   ) { 
     this.incrTestResult = sessionServ.getIncr();
     this.decrTestResult = sessionServ.getDecr();
@@ -54,6 +60,12 @@ export class RunPage implements OnInit {
     this.min_hz = dataService.getMinHZ() * 10;
     this.max_hz = dataService.getMaxHZ() * 10;
     this.values = this.min_hz;
+    this.quickplayMode = formServ.getQuickplay();
+
+    // in quickplay mode, a user only has to go through 1 run
+    if (this.quickplayMode == true) {
+      this.runTotal = 1;
+    }
   }
 
   ngOnInit() { }
@@ -164,11 +176,9 @@ export class RunPage implements OnInit {
    * User will press "next" after finishing all of their runs to see their session results. 
    */
   displayData() {
-    // move the results page to its own page 
     this.incrTestResult = this.sessionServ.getIncr();
     this.decrTestResult = this.sessionServ.getDecr();
   }
-
 
   sendFrequencyData(num) {
     var data = new Uint16Array(1);
@@ -177,6 +187,27 @@ export class RunPage implements OnInit {
       () => console.log("Successfully wrote data. " + data),
       e => console.log("Failed to write. " + e) 
     );
- }
+  }
+
+  async presentAlertConfirm() {
+    const alert = await this.alertController.create({
+      header: 'Confirmation',
+      message: 'Are you sure you want to end this session?',
+      buttons: [
+        {
+          text: 'No'
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.dataService.setRuns([]);
+            this.router.navigate(['/home']);
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
 }

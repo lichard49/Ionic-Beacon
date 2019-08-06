@@ -4,6 +4,7 @@
  */
 
 import { Component } from '@angular/core';
+import { FormService } from '../form.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(
+    private formServ: FormService
+  ) {}
+
+  setQuickplayToFalse() {
+    this.formServ.setQuickplay(false);
+  }
+
+  setQuickplayToTrue() {
+    this.formServ.setQuickplay(true);
+  }
 
 }

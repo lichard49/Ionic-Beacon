@@ -9,11 +9,22 @@ export class FormService {
   showName: boolean;
   showBirthday: boolean;
   showSex: boolean;
+
+  quickplayOn: boolean;
+
   constructor() {
     this.showID = true;
     this.showName = false;
     this.showBirthday = false;
     this.showSex = false;
+  }
+
+  setQuickplay(bool) {
+    this.quickplayOn = bool;
+  }
+
+  getQuickplay() {
+    return this.quickplayOn;
   }
 
   changeShowID() {
