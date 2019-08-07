@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { DatePicker } from '@ionic-native/date-picker/ngx';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +25,8 @@ import { DatePicker } from '@ionic-native/date-picker/ngx';
     StatusBar,
     DatePicker,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    EmailComposer
   ],
   bootstrap: [AppComponent]
 })
