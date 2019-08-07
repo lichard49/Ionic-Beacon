@@ -135,7 +135,7 @@ export class RunPage implements OnInit {
     // Starts the decreasing portion of the test after "delay" number of milliseconds.
     // By default, it starts after 2 seconds. 
     setTimeout(() => {
-      // ??
+      // Sets incr to false since we have now finished the increasing portion of the test.
       this.incr = false;
       // Sets decrTest to true to indicate that the decreasing test has now started.
       this.decrTest = true;

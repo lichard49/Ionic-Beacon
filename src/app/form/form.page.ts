@@ -26,6 +26,9 @@ export class FormPage implements OnInit {
   birthday: string;
   sex: string;
 
+  // test birthday
+  birthday2: string;
+
   // Decides if we show the input fields or not
   showID: boolean;
   showName: boolean;
@@ -77,4 +80,10 @@ export class FormPage implements OnInit {
       this.dataService.setDate(new Date());
       console.log(this.dataService.getDate());
     }
+
+    changeBirthday() {
+      console.log(this.birthday2);
+      this.dataService.setDOB(this.birthday2);
+    }
+  
 }

@@ -11,24 +11,22 @@
     <p *ngIf="showID || showName || showBirthday || showSex">Please enter the following information: </p>
 
     <ion-item *ngIf="showID">
-        <ion-label position="stacked">Study ID<ion-text color="danger"></ion-text></ion-label>
+        <ion-label position="stacked">Study ID<ion-text color="danger">*</ion-text></ion-label>
         <div class="box">
-            <ion-input type="number" [(ngModel)]="studyID" (ionChange)="changeStudyID()"></ion-input>
+            <ion-input required type="number" [(ngModel)]="studyID" (ionChange)="changeStudyID()"></ion-input>
         </div>
-        {{ studyID }}
     </ion-item>
 
     <ion-item *ngIf="showName">
-        <ion-label position="stacked">Name<ion-text color="danger"></ion-text></ion-label>
+        <ion-label position="stacked">Name<ion-text color="danger">*</ion-text></ion-label>
         <div class="box">
-            <ion-input type="text" [(ngModel)]="name" (ionChange)="changeName()"></ion-input>
+            <ion-input required type="text" [(ngModel)]="name" (ionChange)="changeName()"></ion-input>
         </div>
-        {{ name }}
     </ion-item>
 
-    <ion-item *ngIf="showBirthday">
-        <ion-label position="stacked">Birthday</ion-label>
-        <ion-input>
+    <!-- <ion-item *ngIf="showBirthday">
+        <ion-label position="stacked">Birthday<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required>
           <ion-button (click)="showDate()"> 
             <div *ngIf="untouched == true">
                 {{ birthday | date: 'longDate' }}
@@ -38,18 +36,23 @@
             </div>
           </ion-button>
         </ion-input>
-       
+    </ion-item> -->
+
+    <!-- Testing out a new datepicker format-->
+    <ion-item *ngIf="showBirthday">
+        <ion-label>Birthday <ion-text color="danger">*</ion-text> </ion-label>
+        <ion-datetime value="birthday2" placeholder="Select Date" [(ngModel)]="birthday2" (ionChange)="changeBirthday()"></ion-datetime>
     </ion-item>
     
-      <ion-list *ngIf="showSex">
-          <ion-item>
-              <ion-label>Sex</ion-label>
-              <ion-select value="sex" interface="action-sheet" [(ngModel)]="sex" (ionChange)="changeSex()">
-                <ion-select-option value="female">Female</ion-select-option>
-                <ion-select-option value="male">Male</ion-select-option>
-              </ion-select>
-            </ion-item>
-      </ion-list>
+    <ion-list *ngIf="showSex">
+        <ion-item>
+            <ion-label>Sex <ion-text color="danger">*</ion-text> </ion-label>
+            <ion-select value="sex" interface="action-sheet" [(ngModel)]="sex" (ionChange)="changeSex()">
+              <ion-select-option value="female">Female</ion-select-option>
+              <ion-select-option value="male">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+    </ion-list>
 
     <ion-button expand="block" color="medium" (click)="recordDateTime()" routerLink="/run">Start Session</ion-button>
 </ion-content>
