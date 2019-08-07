@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>      
+          <ion-back-button *ngIf="quickplayMode"></ion-back-button>      
       </ion-buttons>
     <ion-title>run</ion-title>
   </ion-toolbar>
@@ -27,7 +27,7 @@
           
         <ion-row>
           <ion-col style="text-align: center" *ngIf="incrTest == false">
-              <ion-button id="incrButton" #second (click)="stopIncr(second)" color="success" class="circleButton">
+              <ion-button id="incrButton" [disabled]="increasingStopped" #second (click)="stopIncr(second)" color="success" class="circleButton">
                   Increasing Test
               </ion-button>
           </ion-col>
@@ -36,7 +36,7 @@
   
       <ion-row *ngIf="decrTest">
         <ion-col style="text-align: center">
-            <ion-button id="decrButton" #second (click)="stopDecr(second)" color="warning" class="circleButton">
+            <ion-button [disabled]="sessionEnded" id="decrButton" #second (click)="stopDecr(second)" color="warning" class="circleButton">
                 Decreasing Test
             </ion-button>
         </ion-col>
