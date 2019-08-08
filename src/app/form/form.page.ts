@@ -1,6 +1,6 @@
 /**
  * Creates a Form (this may be made into a service later on) that records the data the user submits,
- * like study ID, name, sex, and birthday. These input fields only show up if the toggles are set 
+ * like study ID, ParticipantID, sex, and birthday. These input fields only show up if the toggles are set 
  * in the settings page.
  */
 import { Component, OnInit } from '@angular/core';
@@ -22,16 +22,13 @@ export class FormPage implements OnInit {
   untouched: boolean = false;
 
   studyID: number;
-  name: string;
+  participantID: string;
   birthday: string;
   sex: string;
 
-  // test birthday
-  birthday2: string;
-
   // Decides if we show the input fields or not
   showID: boolean;
-  showName: boolean;
+  showParticipantID: boolean;
   showBirthday: boolean;
   showSex: boolean;
 
@@ -45,45 +42,45 @@ export class FormPage implements OnInit {
   // Settings page also has access to the form service.
   ngOnInit() {
     this.showID = this.formService.getShowID();
-    this.showName = this.formService.getShowName();
+    this.showParticipantID = this.formService.getShowParticipantID();
     this.showBirthday = this.formService.getShowBirthday();
     this.showSex = this.formService.getShowSex();
   }
 
-  showDate() {
-    this.datePicker.show({
-      date: new Date(),
-      mode: 'date',
-      androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
-    }).then(
-      date => {
-        this.birthday = date.toString();
-      }
-    );
-    this.untouched = true;
-    this.dataService.setDOB(this.birthday);
-    }
+  // showDate() {
+  //   this.datePicker.show({
+  //     date: new Date(),
+  //     mode: 'date',
+  //     androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
+  //   }).then(
+  //     date => {
+  //       this.birthday = date.toString();
+  //     }
+  //   );
+  //   this.untouched = true;
+  //   this.dataService.setDOB(this.birthday);
+  //   }
 
     changeStudyID() {
         this.dataService.setStudyID(this.studyID);
     }
 
-    changeName() {
-      this.dataService.setName(this.name);
+    changeshowParticipantID() {
+      this.dataService.setParticipantID(this.participantID);
     }
 
     changeSex() {
       this.dataService.setSex(this.sex);
     }
 
-    recordDateTime() {
-      this.dataService.setDate(new Date());
-      console.log(this.dataService.getDate());
-    }
+    // recordDateTime() {
+    //   this.dataService.setDate(new Date());
+    //   console.log(this.dataService.getDate());
+    // }
 
     changeBirthday() {
-      console.log(this.birthday2);
-      this.dataService.setDOB(this.birthday2);
+      console.log(this.birthday);
+      this.dataService.setDOB(this.birthday);
     }
   
 }

@@ -78,7 +78,7 @@ export class BluetoothPage {
         this.ngZone.run(() =>
           this.router.navigate(['/home'])
         )
-      }, 1000);
+      }, 500);
         // this.ngZone.run(() =>
         //   this.router.navigate(['/home'])
         // )

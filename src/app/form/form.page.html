@@ -3,24 +3,24 @@
       <ion-buttons slot="start">
           <ion-back-button></ion-back-button>      
       </ion-buttons>
-      <ion-title style="padding-left: 100px;">beacon</ion-title>
+      <ion-title style="padding-left: 100px;">data</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
-    <p *ngIf="showID || showName || showBirthday || showSex">Please enter the following information: </p>
+    <p *ngIf="showID || showParticipantID || showBirthday || showSex">Please enter the following information: </p>
 
     <ion-item *ngIf="showID">
-        <ion-label position="stacked">Study ID<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked">Study ID <ion-text color="danger">*</ion-text></ion-label>
         <div class="box">
             <ion-input required type="number" [(ngModel)]="studyID" (ionChange)="changeStudyID()"></ion-input>
         </div>
     </ion-item>
 
-    <ion-item *ngIf="showName">
-        <ion-label position="stacked">Name<ion-text color="danger">*</ion-text></ion-label>
+    <ion-item *ngIf="showParticipantID">
+        <ion-label position="stacked">Participant ID <ion-text color="danger">*</ion-text></ion-label>
         <div class="box">
-            <ion-input required type="text" [(ngModel)]="name" (ionChange)="changeName()"></ion-input>
+            <ion-input required type="text" [(ngModel)]="participantID" (ionChange)="changeParticipantID()"></ion-input>
         </div>
     </ion-item>
 
@@ -40,8 +40,8 @@
 
     <!-- Testing out a new datepicker format-->
     <ion-item *ngIf="showBirthday">
-        <ion-label>Birthday <ion-text color="danger">*</ion-text> </ion-label>
-        <ion-datetime value="birthday2" placeholder="Select Date" [(ngModel)]="birthday2" (ionChange)="changeBirthday()"></ion-datetime>
+        <ion-label>Date of Birth <ion-text color="danger">*</ion-text> </ion-label>
+        <ion-datetime value="birthday" placeholder="Select Date" [(ngModel)]="birthday" (ionChange)="changeBirthday()"></ion-datetime>
     </ion-item>
     
     <ion-list *ngIf="showSex">
@@ -54,5 +54,5 @@
           </ion-item>
     </ion-list>
 
-    <ion-button expand="block" color="medium" (click)="recordDateTime()" routerLink="/run">Start Session</ion-button>
+    <ion-button expand="block" color="medium" routerLink="/run">Start Session</ion-button>
 </ion-content>

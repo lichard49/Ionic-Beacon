@@ -4,6 +4,8 @@ import { RunComponent } from '../run/run.component';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AlertController } from '@ionic/angular';
 
+import { FormService } from '../form.service';
+
 @Component({
   selector: 'app-summary',
   templateUrl: './summary.page.html',
@@ -14,13 +16,16 @@ export class SummaryPage implements OnInit {
   email: string;
 
   resultsForEmail: string;
+  quickplayMode: boolean;
 
   constructor(
     private dataService: DataService,
     private emailComposer: EmailComposer,
-    private alertCtrl: AlertController
-
-  ) { }
+    private alertCtrl: AlertController,
+    private formServ: FormService
+  ) { 
+    this.quickplayMode = formServ.getQuickplay();
+  }
 
   // this is causing infinite amount of runs, fix tomorrow
   clearRuns() {
@@ -28,6 +33,7 @@ export class SummaryPage implements OnInit {
   }
 
   async promptForEmail() {
+    this.clearRuns();
     const alert = await this.alertCtrl.create({
       header: 'Email',
       message: 'Data will be sent to your email. What is your email address?',
@@ -58,14 +64,13 @@ export class SummaryPage implements OnInit {
     this.emailComposer.open({
       to: this.email,
       subject: 'Beacon Session Results',
-      body: "Name: " + this.dataService.getName() + "\nDate of Birth: " + this.dataService.getDOB() + "\n StudyID: " + 
+      body: "Participant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + "\n StudyID: " + 
       this.dataService.getStudyID() + 
         "\nResults: " + this.resultsForEmail
     })
   }
   ngOnInit() { 
     this.results = this.dataService.getRuns();
-    console.log("this.results is equal to " + this.results);
   }
 
 }

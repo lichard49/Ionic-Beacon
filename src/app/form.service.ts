@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class FormService {
 
   showID: boolean;
-  showName: boolean;
+  showParticipantID: boolean;
   showBirthday: boolean;
   showSex: boolean;
 
@@ -14,7 +14,7 @@ export class FormService {
 
   constructor() {
     this.showID = true;
-    this.showName = false;
+    this.showParticipantID = true;
     this.showBirthday = false;
     this.showSex = false;
   }
@@ -31,8 +31,8 @@ export class FormService {
     this.showID = !this.showID;
   }
 
-  changeShowName() {
-    this.showName = !this.showName;
+  changeShowParticipantID() {
+    this.showParticipantID = !this.showParticipantID;
   }
 
   changeShowBirthday() {
@@ -55,7 +55,7 @@ export class FormService {
     return this.showID;
   }
 
-  getShowName() {
-    return this.showName;
+  getShowParticipantID() {
+    return this.showParticipantID;
   }
 }

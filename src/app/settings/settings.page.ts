@@ -20,7 +20,7 @@ export class SettingsPage implements OnInit {
   runTotal: number;
   selected = ['','',''];
   showID: boolean;
-  showName: boolean;
+  showParticipantID: boolean;
   showBirthday: boolean;
   showSex: boolean;
 
@@ -83,7 +83,7 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {
     this.showID = this.formService.getShowID();
-    this.showName = this.formService.getShowName();
+    this.showParticipantID = this.formService.getShowParticipantID();
     this.showBirthday = this.formService.getShowBirthday();
     this.showSex = this.formService.getShowSex();
   }
@@ -92,8 +92,8 @@ export class SettingsPage implements OnInit {
     this.formService.changeShowID();
   }
 
-  changeShowName() {
-    this.formService.changeShowName();
+  changeShowParticipantID() {
+    this.formService.changeShowParticipantID();
   }
 
   changeShowBirthday() {

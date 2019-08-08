@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>summary</ion-title>
+    <ion-title>Summary</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,7 +20,8 @@
         </div>
       </div>
 
-      <ion-button routerLink="/home" style="float: right" (click)="promptForEmail()">Done</ion-button>
+      <ion-button *ngIf="quickplayMode == false" routerLink="/home" style="float: right" (click)="promptForEmail()">Done</ion-button>
+      <ion-button *ngIf="quickplayMode == true" routerLink="/home" style="float: right" (click)="clearRuns()">Done</ion-button>
   </div>
   
 

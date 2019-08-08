@@ -8,7 +8,7 @@ export class DataService {
   device_ID: string;
 
   studyID: number;
-  name: string;
+  participantID: string;
   dateOfBirth: string;
   sex: string;
   minHz: number;
@@ -23,7 +23,7 @@ export class DataService {
 
   constructor() { 
     this.studyID = null;
-    this.name = '';
+    this.participantID = '';
     this.dateOfBirth = '';
     this.sex = '';
     this.minHz = 25.0;
@@ -51,8 +51,8 @@ export class DataService {
     this.device_ID = id;
   }
 
-  setName(name) {
-    this.name = name;
+  setParticipantID(id) {
+    this.participantID = id;
   }
   
   setDOB(DOB) {
@@ -96,8 +96,8 @@ export class DataService {
     return this.studyID;
   }
 
-  getName() {
-    return this.name;
+  getParticipantID() {
+    return this.participantID;
   }
 
   getDOB() {
