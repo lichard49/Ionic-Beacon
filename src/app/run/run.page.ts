@@ -248,6 +248,9 @@ export class RunPage implements OnInit {
           text: 'Yes',
           handler: () => {
             this.dataService.setRuns([]);
+            clearInterval(this.interval);
+            this.increasingStopped = true;
+            this.sessionEnded = true;
             this.router.navigate(['/home']);
           }
         }

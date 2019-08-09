@@ -64,9 +64,8 @@ export class SummaryPage implements OnInit {
     this.emailComposer.open({
       to: this.email,
       subject: 'Beacon Session Results',
-      body: "Participant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + "\n StudyID: " + 
-      this.dataService.getStudyID() + 
-        "\nResults: " + this.resultsForEmail
+      body: "Date: " + new Date().toString + "\nParticipant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + "\n StudyID: " + 
+      this.dataService.getStudyID() + "\nResults: " + this.resultsForEmail + "\nNotes: " + this.dataService.getNotes()
     })
   }
   ngOnInit() { 

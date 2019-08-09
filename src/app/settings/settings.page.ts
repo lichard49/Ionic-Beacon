@@ -4,7 +4,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../form.service';
 
-import { RunTrackerService } from '../run-tracker.service';
 // for the picker
 import { PickerController } from '@ionic/angular';
 import { PickerOptions } from '@ionic/core';
@@ -29,13 +28,12 @@ export class SettingsPage implements OnInit {
 
   constructor(
     private formService: FormService,
-    private runTracker: RunTrackerService,
     private pickerCtrl: PickerController,
     private dataService: DataService
   ) { 
-    this.runTotal = runTracker.getTotal();
     this.min = dataService.getMinHZ();
     this.max = dataService.getMaxHZ();
+    this.runTotal = dataService.getRunTotal();
   }
 
   async showBasicPicker() {
@@ -77,7 +75,6 @@ export class SettingsPage implements OnInit {
   }
 
   setTotal() {
-    this.runTracker.setTotal(this.runTotal);
     this.dataService.setRunTotal(this.runTotal);
   }
 
