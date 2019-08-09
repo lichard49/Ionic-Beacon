@@ -15,9 +15,8 @@
       <div class="box">
           {{ roundedVariance }} 
       </div>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ascending &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Descending
       
-     <div *ngFor="let result of results; let i = index">
+     <!-- <div *ngFor="let result of results; let i = index">
        Run {{ i + 1 }}: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <div *ngFor="let sub of result; let j = index" style="display: inline">
          <div *ngIf="j == 0"  style="display: inline">
@@ -25,7 +24,24 @@
             {{ sub.decr }}
          </div>
         </div>
-      </div>
+      </div> -->
+
+      <table>
+
+        <tr>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <th>Incr.</th>
+              <th>Decr.</th>
+          
+        </tr>
+
+        <tr *ngFor="let result of noRedoes; let i = index">
+          Run {{ i + 1 }}:
+          <td> {{ result.incr }} </td>
+          <td> {{ result.decr }} </td>
+        </tr>
+      </table>
+      
 
       
 

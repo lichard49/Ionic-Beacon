@@ -13,6 +13,7 @@ import { FormService } from '../form.service';
 })
 export class SummaryPage implements OnInit {
   results: any[] = [];
+  noRedoes: any[] = [];
   email: string;
 
   average: number;
@@ -115,6 +116,12 @@ export class SummaryPage implements OnInit {
   }
   ngOnInit() { 
     this.results = this.dataService.getRuns();
+
+    for (var i = 0; i < this.results.length; i++) {
+      var arr = this.results[i];
+      this.noRedoes.push(arr[0]);
+    }
+
     this.computeAverage();
     this.computeVariance();
   }
