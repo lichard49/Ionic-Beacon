@@ -13,10 +13,11 @@ Then, download the latest version of Ionic and Cordova by running `npm install -
 Also download Angular using `npm install -g @angular/cli`.
 
 ## Plugins
-This app uses the native datepicker, so you'll need to install the datepicker plugin. Run `ionic cordova plugin add cordova-plugin-datepicker` and then `npm install @ionic-native/date-picker`.
+This app uses several Cordova plugins, including the datepicker, BLEPlugin, and Email Composer.
 
-### Work in Progress:
-For programming the Arduino, you'll need to download the Arduino IDE from https://www.arduino.cc/en/main/software. 
+1. Run `ionic cordova plugin add cordova-plugin-datepicker` and `npm install @ionic-native/date-picker`.
+2. Run `ionic cordova plugin add cordova-plugin-email-composer` and `npm install @ionic-native/email-composer`.
+3. Run `ionic cordova plugin add cordova-plugin-ble-central` and `npm install @ionic-native/ble`.
 
 ## Server
 After running `ionic serve` in the project folder, navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
