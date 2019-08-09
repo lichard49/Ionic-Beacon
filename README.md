@@ -35,3 +35,5 @@ Run `ionic cordova build ios` or `ionic cordova build android`, depending on whi
 
 ## Viewing on a Device
 You can run `ionic cordova emulate` in the terminal (automatically builds) to see the app on either an iOS or an Android device. 
+
+NOTE: Cordova plugins (including Bluetooth) will NOT work on an emulator, so make sure to run "MyApp.xcodeproj" in XCode on an iOS device to test native functionality. 
