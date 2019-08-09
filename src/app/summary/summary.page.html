@@ -13,11 +13,13 @@
        Run {{ i + 1 }}: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
        <div *ngFor="let sub of result; let j = index" style="display: inline">
          <div *ngIf="j == 0"  style="display: inline">
-            {{ sub.incr / 10 }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-            {{ sub.decr / 10 }}
+            {{ sub.incr }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            {{ sub.decr }}
          </div>
         </div>
       </div>
+
+      <p>Average: {{ roundedAverage }} Hz</p>
 
       <ion-button *ngIf="quickplayMode == false" routerLink="/home" style="float: right" (click)="promptForEmail()">Done</ion-button>
       <ion-button *ngIf="quickplayMode == true" routerLink="/home" style="float: right" (click)="clearRuns()">Done</ion-button>

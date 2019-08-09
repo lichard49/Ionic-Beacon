@@ -1,25 +1,25 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Bluetooth Scanner
-    </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <h1>Bluetooth</h1>
-  <p>Before using Beacon, you must first connect to the device. </p>
-  <br>
-  <ion-button #first id="button" expand="block" (click)="scan(first)">
-    Connect to Beacon <ion-icon name="bluetooth"></ion-icon>
-  </ion-button>
-   <ion-list> 
-    <div *ngFor="let device of devices">
-      <p>Found: {{ device.name || 'Unnamed' }} 
-      {{ device.id }} </p>
-    </div>  
-   </ion-list> 
-   <ion-button routerLink="/home">Continue</ion-button>
+<ion-content> 
+  <div class="space">
+      <h1 style="text-align: center">Bluetooth Setup</h1>
+      <p>Before using Beacon, you must first connect to the device. </p>
+      <br>
+      <ion-button #first id="button" expand="block" (click)="scan(first)">
+        Connect to Beacon <ion-icon name="bluetooth"></ion-icon>
+      </ion-button>
+       <ion-list> 
+        <div *ngFor="let device of devices">
+          <p>Found: {{ device.name || 'Unnamed' }} 
+          {{ device.id }} </p>
+        </div>  
+       </ion-list> 
+       <ion-button routerLink="/home" style="float: right;">Skip</ion-button>
+  </div>
+      
 </ion-content>
 
 <ion-footer>

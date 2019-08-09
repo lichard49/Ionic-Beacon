@@ -171,10 +171,10 @@ export class RunPage implements OnInit {
     this.showFinishButton = true;
     if (this.redoFlag == true) {
       var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
-      runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
+      runsAtIndex.unshift(new RunComponent(this.incrTestResult / 10, this.decrTestResult / 10));
     } else {
       this.dataService.addRun(
-        [ new RunComponent(this.incrTestResult, this.decrTestResult) ]
+        [ new RunComponent(this.incrTestResult / 10, this.decrTestResult / 10) ]
       );
     }
    }

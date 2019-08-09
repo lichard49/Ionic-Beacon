@@ -15,6 +15,9 @@ export class SummaryPage implements OnInit {
   results: any[] = [];
   email: string;
 
+  average: number;
+  roundedAverage: number;
+
   resultsForEmail: string;
   quickplayMode: boolean;
 
@@ -59,6 +62,31 @@ export class SummaryPage implements OnInit {
     await alert.present();
   }
 
+  computeAverage() {
+    // let testResults = [
+    //   [
+    //     new RunComponent(25.5, 35.5),
+    //     new RunComponent(100, 300)
+    //   ],
+    //   [
+    //     new RunComponent(32, 32)
+    //   ]
+    // ]
+    var sum = 0;
+    for (var i = 0; i < this.results.length; i++) {
+      var arr = this.results[i];
+      var incr = arr[0].incr;
+      var decr = arr[0].decr;
+      console.log(incr);
+      console.log(decr);
+      var rowAvg = (incr + decr) / 2;
+      console.log("row average is: " + rowAvg);
+      sum += rowAvg;
+    }
+    this.average = sum / this.results.length;
+    this.roundedAverage = Math.round(this.average * 10) / 10;
+  }
+
   sendEmail() {
     this.clearRuns();
     this.emailComposer.open({
@@ -70,6 +98,7 @@ export class SummaryPage implements OnInit {
   }
   ngOnInit() { 
     this.results = this.dataService.getRuns();
+    this.computeAverage();
   }
 
 }
