@@ -47,11 +47,11 @@
           <p *ngIf="decrTest && sessionEnded == false">Decreasing: {{ values / 10 }} Hz</p>
       </div>
     
-     <!-- DEBUGGING ONLY -->
+     <!-- DEBUGGING ONLY
      <p *ngIf="sessionEnded">Session Results: <br>
     Increasing: {{ incrTestResult / 10 }} Hz <br>
     Decreasing: {{ decrTestResult / 10 }} Hz
-    </p>
+    </p> -->
 
     <div style="float: right">
         <ion-button *ngIf="showNextRunButton && currentRun < runTotal" (click)="nextRun(second)">Next</ion-button>
