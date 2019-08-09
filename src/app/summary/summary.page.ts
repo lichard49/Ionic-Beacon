@@ -18,6 +18,9 @@ export class SummaryPage implements OnInit {
   average: number;
   roundedAverage: number;
 
+  variance: number = 0;
+  roundedVariance: number;
+
   resultsForEmail: string;
   quickplayMode: boolean;
 
@@ -87,6 +90,20 @@ export class SummaryPage implements OnInit {
     this.roundedAverage = Math.round(this.average * 10) / 10;
   }
 
+  computeVariance() {
+    for (var i = 0; i < this.results.length; i++) {
+      var arr = this.results[i];
+      var incr = arr[0].incr;
+      var decr = arr[0].decr;
+      var diff1 = incr - this.average;
+      var diff2 = decr - this.average;
+      this.variance += Math.pow(diff1, 2);
+      this.variance += Math.pow(diff2, 2);
+    }
+    this.variance = this.variance / this.results.length;
+    this.roundedVariance = Math.round(this.variance * 10) / 10;
+  }
+
   sendEmail() {
     this.clearRuns();
     this.emailComposer.open({
@@ -99,6 +116,7 @@ export class SummaryPage implements OnInit {
   ngOnInit() { 
     this.results = this.dataService.getRuns();
     this.computeAverage();
+    this.computeVariance();
   }
 
 }
