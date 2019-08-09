@@ -38,6 +38,11 @@ export class BluetoothPage {
   }
 
   scan(ionicButton) {
+    BLE.isEnabled().then(function() {
+      console.log("Bluetooth is enabled.")
+    }, function() {
+      console.log("Bluetooth needs to be enabled.")
+    });
     this.setStatus('Scanning for Bluetooth LE Devices');
     
     // This only displays Beacon / Flicker when it is powered on

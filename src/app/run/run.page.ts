@@ -115,7 +115,7 @@ export class RunPage implements OnInit {
         this.stopIncr(ionicButton);
         // Otherwise, the frequency continues to increment by a step rate of 0.1 hz / 0.2 sec
       } else {
-        // this.sendFrequencyData(this.values);
+        this.sendFrequencyData(this.values);
         this.values++;
         console.log(this.values);
       }
@@ -147,7 +147,7 @@ export class RunPage implements OnInit {
         if (this.values == this.min_hz) {
           this.stopDecr(ionicButton);
         } else {
-          // this.sendFrequencyData(this.values);
+          this.sendFrequencyData(this.values);
           this.values--;
           console.log(this.values);
           ionicButton.color = "success";
@@ -160,29 +160,23 @@ export class RunPage implements OnInit {
   stopDecr(ionicButton) {
     clearInterval(this.interval);
     this.sessionEnded = true;
-    //if (this.sessionEnded == false) {
-      this.sessionServ.setDecr(this.values);
-      if (this.redoFlag == false) {
-        this.progress += (1 / this.runTotal);
-      }
-      // stops the timer
-      
-      ionicButton.color = 'medium';
-      this.displayData();
-      this.showNextRunButton = true;
-      this.showFinishButton = true;
-      if (this.redoFlag == true) {
-        var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
-        runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
-      } else {
-        this.dataService.addRun(
-          [ new RunComponent(this.incrTestResult, this.decrTestResult) ]
-        );
-      }
-      console.log("session ended value is after entering the if check: " + this.sessionEnded);
-    //}
-    // debugging
-    console.log("Current runs after " + this.currentRun + " run: " + this.dataService.getRuns());
+    this.sessionServ.setDecr(this.values);
+    if (this.redoFlag == false) {
+      this.progress += (1 / this.runTotal);
+    }
+    
+    ionicButton.color = 'medium';
+    this.displayData();
+    this.showNextRunButton = true;
+    this.showFinishButton = true;
+    if (this.redoFlag == true) {
+      var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
+      runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
+    } else {
+      this.dataService.addRun(
+        [ new RunComponent(this.incrTestResult, this.decrTestResult) ]
+      );
+    }
    }
 
    nextRun(ionicButton) {
@@ -207,10 +201,6 @@ export class RunPage implements OnInit {
     this.startIncr(ionicButton);
     this.redoFlag = true;
     console.log("In redo run, the current run is: " + this.currentRun);
-
-    // var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
-    // console.log(runsAtIndex);
-    // runsAtIndex.unshift(new RunComponent(this.incrTestResult, this.decrTestResult));
    }
 
    stopSession() {
