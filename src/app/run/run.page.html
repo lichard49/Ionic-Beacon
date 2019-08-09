@@ -56,7 +56,7 @@
 
     <div style="float: right">
         <ion-button *ngIf="showNextRunButton && currentRun < runTotal" (click)="nextRun(second)">Next</ion-button>
-        <ion-button *ngIf="showFinishButton && currentRun == runTotal" routerLink="/summary" (click)="stopSession()">Finish</ion-button>
+        <ion-button *ngIf="showFinishButton && currentRun == runTotal" routerLink="/notes" (click)="stopSession()">Finish</ion-button>
     </div>
     <div style="float: left">
         <ion-button *ngIf="showNextRunButton && currentRun <= runTotal" (click)="redoRun(second)">Redo</ion-button>

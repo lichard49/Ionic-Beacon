@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title style="text-align: center">notes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  <div class="notes">
+    <h1>Notes</h1>
+    Instructions: Enter any notes you want.
+    <br>
+    Examples: <i>A person walked in during the session, got distracted during one of the runs. </i>
+    <br>
+    <div class="notesBox">
+        <ion-textarea placeholder="Notes..." [(ngModel)]="notes"></ion-textarea>
+    </div>
+  </div>
+  <div class="rightAlign">
+      <ion-button color="medium" routerLink="/summary" (click)="updateNotes()">Next</ion-button>
+  </div>
+  </ion-content>
+  

@@ -19,10 +19,11 @@ const routes: Routes = [
   { path: 'decr-instr', loadChildren: './session/decr-instr/decr-instr.module#DecrInstrPageModule' },
   { path: 'decr-test', loadChildren: './session/decr-test/decr-test.module#DecrTestPageModule' },
   { path: 'run-complete', loadChildren: './session/run-complete/run-complete.module#RunCompletePageModule' },
-  { path: 'notes', loadChildren: './session/notes/notes.module#NotesPageModule' },
+  { path: 'notesOld', loadChildren: './session/notesOld/notes.module#NotesPageModule' },
   { path: 'bluetooth', loadChildren: './bluetooth/bluetooth.module#BluetoothPageModule' },
   { path: 'run', loadChildren: './run/run.module#RunPageModule' },
   { path: 'summary', loadChildren: './summary/summary.module#SummaryPageModule' },
+  { path: 'notes', loadChildren: './notes/notes.module#NotesPageModule' },
 ];
 
 @NgModule({
