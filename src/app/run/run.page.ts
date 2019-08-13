@@ -157,18 +157,27 @@ export class RunPage implements OnInit {
   }
 
 
+  /*
+  Stops the decreasing run and records the frequency associated with the decreasing run. 
+  */
   stopDecr(ionicButton) {
     clearInterval(this.interval);
     this.sessionEnded = true;
+    // Storing the frequency at which the user saw a flickering light
     this.sessionServ.setDecr(this.values);
+    // If the run is not a redo, then the progress bar gets incremented
     if (this.redoFlag == false) {
       this.progress += (1 / this.runTotal);
     }
     
+    // Sets the button to a dark grey
     ionicButton.color = 'medium';
-    this.displayData();
+    // This is meant for debugging, to verify that the results in session summary are accurate
+    //this.displayData();
+    // Turns on the display for the next run and finish buttons
     this.showNextRunButton = true;
     this.showFinishButton = true;
+    // If the run is a redo, then we add the next run to the start of the runs (similar to a stack data structure)
     if (this.redoFlag == true) {
       var runsAtIndex = this.dataService.getRun(this.currentRun - 1);
       runsAtIndex.unshift(new RunComponent(this.incrTestResult / 10, this.decrTestResult / 10));
@@ -217,6 +226,7 @@ export class RunPage implements OnInit {
     this.decrTestResult = this.sessionServ.getDecr();
   }
 
+  // Sends data to the device
   sendFrequencyData(num) {
     var data = new Uint16Array(1);
     data[0] = num;
@@ -226,6 +236,7 @@ export class RunPage implements OnInit {
     );
   }
 
+  // Confirmation popup dialog. Exiting the session clears the interval, resets the runs, and sets button flags accordingly. 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({
       header: 'Confirmation',

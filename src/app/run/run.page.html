@@ -19,7 +19,7 @@
        <ion-row>
          <ion-col style="text-align: center" *ngIf="incrTest">
             <ion-button #second (click)="startIncr(second)" color="success" class="circleButton">
-                Increasing Test
+                Increasing Run
             </ion-button>
           </ion-col>
         </ion-row>
@@ -27,7 +27,7 @@
         <ion-row>
           <ion-col style="text-align: center" *ngIf="incrTest == false">
               <ion-button id="incrButton" [disabled]="increasingStopped" #second (click)="stopIncr(second)" color="success" class="circleButton">
-                  Increasing Test
+                  Increasing Run
               </ion-button>
           </ion-col>
         </ion-row>
@@ -36,7 +36,7 @@
       <ion-row *ngIf="decrTest">
         <ion-col style="text-align: center">
             <ion-button [disabled]="sessionEnded" id="decrButton" #second (click)="stopDecr(second)" color="warning" class="circleButton">
-                Decreasing Test
+                Decreasing Run
             </ion-button>
         </ion-col>
       </ion-row>
