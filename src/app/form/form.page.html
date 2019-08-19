@@ -8,12 +8,11 @@
 </ion-header>
 
 <ion-content fullscreen>
-    <!-- <p *ngIf="showID || showParticipantID || showBirthday || showSex">Please enter the following information: </p> -->
 
     <ion-item *ngIf="showID">
         <ion-label position="stacked">Study ID <ion-text color="danger">*</ion-text></ion-label>
         <div class="box">
-            <ion-input required type="number" [(ngModel)]="studyID" (ionChange)="changeStudyID()"></ion-input>
+            <ion-input required type="text" [(ngModel)]="studyID" (ionChange)="changeStudyID()"></ion-input>
         </div>
     </ion-item>
 
@@ -23,20 +22,6 @@
             <ion-input required type="text" [(ngModel)]="participantID" (ionChange)="changeParticipantID()"></ion-input>
         </div>
     </ion-item>
-
-    <!-- <ion-item *ngIf="showBirthday">
-        <ion-label position="stacked">Birthday<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input required>
-          <ion-button (click)="showDate()"> 
-            <div *ngIf="untouched == true">
-                {{ birthday | date: 'longDate' }}
-            </div>
-            <div *ngIf="untouched == false">
-                Select
-            </div>
-          </ion-button>
-        </ion-input>
-    </ion-item> -->
 
     <!-- Testing out a new datepicker format-->
     <ion-item *ngIf="showBirthday">

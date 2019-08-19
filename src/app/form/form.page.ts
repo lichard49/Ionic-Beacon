@@ -5,7 +5,6 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { FormService } from '../form.service';
-import { DatePicker } from '@ionic-native/date-picker/ngx';
 
 import { DataService } from '../data.service';
 
@@ -16,12 +15,8 @@ import { DataService } from '../data.service';
 })
 
 export class FormPage implements OnInit {
-  // used to determine if we display "select" as the text in the button or the actual date the user has selected
-  // false -> "select"
-  // true -> the date the user selects as their birthday
-  untouched: boolean = false;
 
-  studyID: number;
+  studyID: string;
   participantID: string;
   birthday: string;
   sex: string;
@@ -34,7 +29,6 @@ export class FormPage implements OnInit {
 
   constructor(
     private formService: FormService,
-    private datePicker: DatePicker,
     private dataService: DataService
   ) { }
 
@@ -47,22 +41,9 @@ export class FormPage implements OnInit {
     this.showSex = this.formService.getShowSex();
   }
 
-  // showDate() {
-  //   this.datePicker.show({
-  //     date: new Date(),
-  //     mode: 'date',
-  //     androidTheme: this.datePicker.ANDROID_THEMES.THEME_HOLO_DARK
-  //   }).then(
-  //     date => {
-  //       this.birthday = date.toString();
-  //     }
-  //   );
-  //   this.untouched = true;
-  //   this.dataService.setDOB(this.birthday);
-  //   }
-
     changeStudyID() {
         this.dataService.setStudyID(this.studyID);
+        console.log("study ID is: " + this.dataService.getStudyID());
     }
 
     changeParticipantID() {
@@ -73,11 +54,6 @@ export class FormPage implements OnInit {
     changeSex() {
       this.dataService.setSex(this.sex);
     }
-
-    // recordDateTime() {
-    //   this.dataService.setDate(new Date());
-    //   console.log(this.dataService.getDate());
-    // }
 
     changeBirthday() {
       console.log(this.birthday);
