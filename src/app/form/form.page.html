@@ -9,6 +9,7 @@
 
 <ion-content fullscreen>
 
+    <!-- An input text box for recording the Study ID. -->
     <ion-item *ngIf="showID">
         <ion-label position="stacked">Study ID <ion-text color="danger">*</ion-text></ion-label>
         <div class="box">
@@ -16,6 +17,7 @@
         </div>
     </ion-item>
 
+    <!-- An input text box for recording the Participant ID. -->
     <ion-item *ngIf="showParticipantID">
         <ion-label position="stacked">Participant ID <ion-text color="danger">*</ion-text></ion-label>
         <div class="box">
@@ -23,12 +25,13 @@
         </div>
     </ion-item>
 
-    <!-- Testing out a new datepicker format-->
+    <!-- A datepicker for recording the user's date of birth. -->
     <ion-item *ngIf="showBirthday">
         <ion-label>Date of Birth <ion-text color="danger">*</ion-text> </ion-label>
         <ion-datetime value="birthday" placeholder="Select Date" [(ngModel)]="birthday" (ionChange)="changeBirthday()"></ion-datetime>
     </ion-item>
     
+    <!-- A dropdown for recording the user's sex. -->
     <ion-list *ngIf="showSex">
         <ion-item>
             <ion-label>Sex <ion-text color="danger">*</ion-text> </ion-label>

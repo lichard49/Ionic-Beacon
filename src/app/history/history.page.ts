@@ -83,7 +83,7 @@ export class HistoryPage implements OnInit {
   constructor() {
     var stringifiedData = JSON.stringify(this.userData);
     this.parsedData = JSON.parse(stringifiedData);
-   }
+  }
 
   ngOnInit() {
   }
