@@ -1,7 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
 import { BLE } from '@ionic-native/ble';
-import { SessionDataService } from '../session-data.service';
 import { DataService } from '../data.service';
 import { RunComponent } from './run.component';
 import { FormService } from '../form.service';
@@ -58,8 +57,6 @@ export class RunPage implements OnInit {
   // Used to signify that the increasing test has been stopped
   increasingStopped: boolean = false;
 
-  // Used for debugging only, to show the results on the screen. 
-  // TODO: Remove once the app is in final stages.
   incrTestResult: number;
   decrTestResult: number;
   // True if the user pressed quickplay, false otherwise. 
@@ -67,7 +64,7 @@ export class RunPage implements OnInit {
 
   constructor(public navCtrl: NavController, 
     // an Angular service
-    private sessionServ: SessionDataService,
+    //private sessionServ: SessionDataService,
     private dataService: DataService,
     private formServ: FormService,
     public alertController: AlertController,
@@ -126,7 +123,8 @@ export class RunPage implements OnInit {
   // increasing test value. Then, it triggers the decreasing portion of the test to start.
   stopIncr(ionicButton) {
     this.increasingStopped = true;
-    this.sessionServ.setIncr(this.values);
+    //this.sessionServ.setIncr(this.values);
+    this.incrTestResult = this.values;
     // Stops the repeating function from occuring
     clearInterval(this.interval);
     // Changes the color to a medium gray to signal that the button is disabled.
@@ -163,8 +161,9 @@ export class RunPage implements OnInit {
   stopDecr(ionicButton) {
     clearInterval(this.interval);
     this.sessionEnded = true;
+    console.log("entered stop decr!");
     // Storing the frequency at which the user saw a flickering light
-    this.sessionServ.setDecr(this.values);
+    //this.sessionServ.setDecr(this.values);
     // If the run is not a redo, then the progress bar gets incremented
     if (this.redoFlag == false) {
       this.progress += (1 / this.runTotal);
@@ -172,8 +171,7 @@ export class RunPage implements OnInit {
     
     // Sets the button to a dark grey
     ionicButton.color = 'medium';
-    // This is meant for debugging, to verify that the results in session summary are accurate
-    //this.displayData();
+    this.decrTestResult = this.values;
     // Turns on the display for the next run and finish buttons
     this.showNextRunButton = true;
     this.showFinishButton = true;
@@ -217,14 +215,10 @@ export class RunPage implements OnInit {
     console.log(this.dataService.getRuns());
    }
 
-  /**
-   * This is used for debugging purposes only. In the actual app, session results will be on a separate screen. 
-   * User will press "next" after finishing all of their runs to see their session results. 
-   */
-  displayData() {
-    this.incrTestResult = this.sessionServ.getIncr();
-    this.decrTestResult = this.sessionServ.getDecr();
-  }
+  // displayData() {
+  //   this.incrTestResult = this.sessionServ.getIncr();
+  //   this.decrTestResult = this.sessionServ.getDecr();
+  // }
 
   // Sends data to the device
   sendFrequencyData(num) {

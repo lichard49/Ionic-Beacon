@@ -107,10 +107,12 @@ export class SummaryPage implements OnInit {
 
   sendEmail() {
     this.clearRuns();
+    var dateobj = new Date();
+    var dateString = dateobj.toString();
     this.emailComposer.open({
       to: this.email,
       subject: 'Beacon Session Results',
-      body: "Date: " + new Date().toString + "\nParticipant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + "\n StudyID: " + 
+      body: "Date: " + dateString + "\nParticipant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + "\n StudyID: " + 
       this.dataService.getStudyID() + "\nResults: " + this.resultsForEmail + "\nNotes: " + this.dataService.getNotes()
     })
   }

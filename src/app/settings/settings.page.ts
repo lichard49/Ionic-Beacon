@@ -17,12 +17,16 @@ import { DataService } from '../data.service';
 })
 export class SettingsPage implements OnInit {
   runTotal: number;
-  selected = ['','',''];
+  // True if we do want to show the study ID field on the form, false otherwise.
   showID: boolean;
+  // True if we do want to show the participant ID field on the form, false otherwise.
   showParticipantID: boolean;
+  // True if we do want to show the DOB field on the form, false otherwise.
   showBirthday: boolean;
+  // True if we do want to show the sex field on the form, false otherwise.
   showSex: boolean;
 
+  // min and max frequencies
   min: number;
   max: number;
 
