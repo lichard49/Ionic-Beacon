@@ -245,6 +245,10 @@ export class RunPage implements OnInit {
             this.dataService.setRuns([]);
             clearInterval(this.interval);
             this.increasingStopped = true;
+            this.dataService.setDOB("");
+            this.dataService.setStudyID("");
+            this.dataService.setParticipantID("");
+            this.dataService.setSex("");
             this.sessionEnded = true;
             this.router.navigate(['/home']);
           }

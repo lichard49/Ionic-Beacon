@@ -65,8 +65,9 @@ export class FormPage implements OnInit {
         this.dataService.setStudyID(this.studyID);
     }
 
-    changeshowParticipantID() {
+    changeParticipantID() {
       this.dataService.setParticipantID(this.participantID);
+      console.log("participant ID is: " + this.dataService.getParticipantID());
     }
 
     changeSex() {

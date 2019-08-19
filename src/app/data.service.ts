@@ -7,7 +7,7 @@ export class DataService {
   // for finding Beacon
   device_ID: string;
 
-  studyID: number;
+  studyID: string;
   participantID: string;
   dateOfBirth: string;
   sex: string;
@@ -22,7 +22,7 @@ export class DataService {
   notes: string;
 
   constructor() { 
-    this.studyID = null;
+    this.studyID = '';
     this.participantID = '';
     this.dateOfBirth = '';
     this.sex = '';
