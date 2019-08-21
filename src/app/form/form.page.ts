@@ -32,14 +32,14 @@ export class FormPage implements OnInit {
     private dataService: DataService
   ) { }
 
-  // The boolean values come from the toggle buttons set in the Settings page. 
-  // Settings page also has access to the form service.
-  ngOnInit() {
-    this.showID = this.formService.getShowID();
-    this.showParticipantID = this.formService.getShowParticipantID();
-    this.showBirthday = this.formService.getShowBirthday();
-    this.showSex = this.formService.getShowSex();
-  }
+    // The boolean values come from the toggle buttons set in the Settings page. 
+    // Settings page also has access to the form service.
+    ngOnInit() {
+      this.showID = this.formService.getShowID();
+      this.showParticipantID = this.formService.getShowParticipantID();
+      this.showBirthday = this.formService.getShowBirthday();
+      this.showSex = this.formService.getShowSex();
+    }
 
     changeStudyID() {
         this.dataService.setStudyID(this.studyID);
@@ -59,5 +59,14 @@ export class FormPage implements OnInit {
       console.log(this.birthday);
       this.dataService.setDOB(this.birthday);
     }
+
+    displayError() {
+      console.log("displayError pressed");
+    }
+
+    quickplayToFalse() {
+      this.formService.setQuickplay(false);
+    }
+
   
 }

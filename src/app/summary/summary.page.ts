@@ -38,13 +38,18 @@ export class SummaryPage implements OnInit {
     private formServ: FormService,
    
   ) { 
-    this.quickplayMode = formServ.getQuickplay();
   }
 
   ngOnInit() { 
+    this.quickplayMode = this.formServ.getQuickplay();
+    console.log("quickplayMode is equal to " + this.quickplayMode);
     this.results = this.dataService.getRuns();
     this.prefilledNotes = this.dataService.getNotes();
-    (<HTMLInputElement>document.getElementById("prefill")).value = this.prefilledNotes;
+    if (this.quickplayMode == false) {
+      if (<HTMLInputElement>document.getElementById("prefill") != null) {
+        (<HTMLInputElement>document.getElementById("prefill")).value = this.prefilledNotes;
+      }
+    }
     var runNumbers = [];
     for (var i = 0; i < this.results.length; i++) {
       runNumbers.push("Run " + (i + 1));
@@ -167,6 +172,7 @@ export class SummaryPage implements OnInit {
       to: this.email,
       subject: 'Beacon Session Results',
       body: "Date: " + dateString + "\nParticipant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + 
+      "\nSex: " + this.dataService.getSex() + 
       "\n StudyID: " + this.dataService.getStudyID() + "\nResults: " + this.resultsForEmail + "\nTotal Number of Runs: " + this.dataService.getRunTotal() 
       + "\nNotes: " + this.dataService.getNotes() + "\nMin HZ: " + this.dataService.getMinHZ() + "\nMax HZ: " + this.dataService.getMaxHZ() + 
       "\nAverage: " + this.dataService.getAverage() + "\nVariance: " + this.dataService.getVariance()
