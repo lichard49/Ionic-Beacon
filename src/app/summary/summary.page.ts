@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataService } from '../data.service';
-import { RunComponent } from '../run/run.component';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AlertController } from '@ionic/angular';
 
@@ -18,6 +17,7 @@ export class SummaryPage implements OnInit {
   private barChart: Chart;
   results: any[] = [];
   noRedoes: any[] = [];
+  runAverages: any[] = [];
   email: string;
 
   average: number;
@@ -41,48 +41,42 @@ export class SummaryPage implements OnInit {
 
   ngOnInit() { 
     this.results = this.dataService.getRuns();
+    var runNumbers = [];
     for (var i = 0; i < this.results.length; i++) {
+      runNumbers.push("Run " + (i + 1));
       var arr = this.results[i];
       this.noRedoes.push(arr[0]);
     }
+    // var runAverages = [];
+    // for (var i = 0; i < this.noRedoes.length; i++) {
+    //   var arr = this.noRedoes[i];
+    //   var average = (arr.incr + arr.decr) / 2;
+    //   runAverages.push(average);
+    //   console.log("average is: " + average);
+    // }
     this.computeAverage();
     this.computeVariance();
     this.dataService.allData();
 
     this.barChart = new Chart(this.barCanvas.nativeElement, {
-      type: "bar",
+      type: "line",
       data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [
-          {
-            label: "# of Votes",
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-              "rgba(255, 99, 132, 0.2)",
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 206, 86, 0.2)",
-              "rgba(75, 192, 192, 0.2)",
-              "rgba(153, 102, 255, 0.2)",
-              "rgba(255, 159, 64, 0.2)"
-            ],
-            borderColor: [
-              "rgba(255,99,132,1)",
-              "rgba(54, 162, 235, 1)",
-              "rgba(255, 206, 86, 1)",
-              "rgba(75, 192, 192, 1)",
-              "rgba(153, 102, 255, 1)",
-              "rgba(255, 159, 64, 1)"
-            ],
-            borderWidth: 1
-          }
-        ]
-      },
+        labels: runNumbers,
+        datasets: [{
+            label: 'Average of Increasing and Decreasing',
+            fill: false,
+            borderColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'rgb(255, 255, 255)',
+            data: this.runAverages,
+        }]
+    },
       options: {
         scales: {
           yAxes: [
             {
               ticks: {
-                beginAtZero: true
+                suggestedMin: this.dataService.getMinHZ(),
+                suggestedMax: this.dataService.getMaxHZ(),
               }
             }
           ]
@@ -124,15 +118,6 @@ export class SummaryPage implements OnInit {
   }
 
   computeAverage() {
-    // let testResults = [
-    //   [
-    //     new RunComponent(25.5, 35.5),
-    //     new RunComponent(100, 300)
-    //   ],
-    //   [
-    //     new RunComponent(32, 32)
-    //   ]
-    // ]
     var sum = 0;
     for (var i = 0; i < this.results.length; i++) {
       var arr = this.results[i];
@@ -142,6 +127,7 @@ export class SummaryPage implements OnInit {
       console.log(decr);
       var rowAvg = (incr + decr) / 2;
       console.log("row average is: " + rowAvg);
+      this.runAverages.push(rowAvg);
       sum += rowAvg;
     }
     this.average = sum / this.results.length;
