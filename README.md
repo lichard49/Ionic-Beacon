@@ -19,6 +19,9 @@ This app uses several Cordova plugins, including the datepicker, BLEPlugin, and 
 2. Run `ionic cordova plugin add cordova-plugin-email-composer` and `npm install @ionic-native/email-composer`.
 3. Run `ionic cordova plugin add cordova-plugin-ble-central` and `npm install @ionic-native/ble`.
 
+## Chart.js
+Run `npm install chart.js --save`.
+
 ## Server
 After running `ionic serve` in the project folder, navigate to `http://localhost:8100/`. The app will automatically reload if you change any of the source files.
 
