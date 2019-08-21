@@ -26,7 +26,7 @@ import { EmailComposer } from '@ionic-native/email-composer/ngx';
     DatePicker,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    EmailComposer
+    EmailComposer,
   ],
   bootstrap: [AppComponent]
 })

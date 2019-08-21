@@ -41,6 +41,16 @@
           <td> {{ result.decr }} </td>
         </tr>
       </table>
+
+      <!-- Testing out Chart.js -->
+      <ion-card>
+        <ion-card-header>
+          Bar Chart
+        </ion-card-header>
+        <ion-card-content>
+          <canvas #barCanvas></canvas>
+        </ion-card-content>
+      </ion-card>
       
       <ion-button *ngIf="quickplayMode == false" routerLink="/home" style="float: right" (click)="promptForEmail()">Done</ion-button>
       <ion-button *ngIf="quickplayMode == true" routerLink="/home" style="float: right" (click)="clearRuns()">Done</ion-button>

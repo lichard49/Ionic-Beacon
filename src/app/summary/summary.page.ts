@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataService } from '../data.service';
 import { RunComponent } from '../run/run.component';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AlertController } from '@ionic/angular';
 
+import { Chart } from 'chart.js';
 import { FormService } from '../form.service';
 
 @Component({
@@ -12,6 +13,9 @@ import { FormService } from '../form.service';
   styleUrls: ['./summary.page.scss'],
 })
 export class SummaryPage implements OnInit {
+  @ViewChild("barCanvas") barCanvas: ElementRef;
+
+  private barChart: Chart;
   results: any[] = [];
   noRedoes: any[] = [];
   email: string;
@@ -29,9 +33,62 @@ export class SummaryPage implements OnInit {
     private dataService: DataService,
     private emailComposer: EmailComposer,
     private alertCtrl: AlertController,
-    private formServ: FormService
+    private formServ: FormService,
+   
   ) { 
     this.quickplayMode = formServ.getQuickplay();
+  }
+
+  ngOnInit() { 
+    this.results = this.dataService.getRuns();
+    for (var i = 0; i < this.results.length; i++) {
+      var arr = this.results[i];
+      this.noRedoes.push(arr[0]);
+    }
+    this.computeAverage();
+    this.computeVariance();
+    this.dataService.allData();
+
+    this.barChart = new Chart(this.barCanvas.nativeElement, {
+      type: "bar",
+      data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(255, 159, 64, 0.2)"
+            ],
+            borderColor: [
+              "rgba(255,99,132,1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+              "rgba(255, 159, 64, 1)"
+            ],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
   }
 
   // this is causing infinite amount of runs, fix tomorrow
@@ -116,16 +173,4 @@ export class SummaryPage implements OnInit {
       this.dataService.getStudyID() + "\nResults: " + this.resultsForEmail + "\nNotes: " + this.dataService.getNotes()
     })
   }
-  ngOnInit() { 
-    this.results = this.dataService.getRuns();
-
-    for (var i = 0; i < this.results.length; i++) {
-      var arr = this.results[i];
-      this.noRedoes.push(arr[0]);
-    }
-
-    this.computeAverage();
-    this.computeVariance();
-  }
-
 }

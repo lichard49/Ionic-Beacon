@@ -147,4 +147,52 @@ export class DataService {
   getDeviceID() {
     return this.device_ID;
   }
+
+  // userData = [
+  //   {
+  //     "studyID": "12345",
+  //     "date": "Thu Jul 18 2019 16:05:58 GMT-0700",
+  //     "sex": "f",
+  //     "dateOfBirth": "1987-01-02",
+  //     "minHz": "25.0",
+  //     "maxHz": "55.0",
+  //     "session": [ 
+  //       {
+  //         "incr": "33.2",
+  //         "decr": "34.7"
+  //       },
+  //       {
+  //         "incr": "34.0",
+  //         "decr": "30.8"
+  //       }
+  //     ],
+  //     "average": "31.5",
+  //     "variance": "2.3"
+  //   }
+  // ]
+
+  // [
+  //  { "studyID":"2738" },
+  // {"date":"2019-08-19T21:55:19.245Z"},
+  // {"sex":""},
+  // {"dateOfBirth":""},
+  // {"minHz":25},
+  // {"maxHz":55},
+  // {"session":[[{"incr":26.1,"decr":54.5}],[{"incr":25.7,"decr":54.7}]]},
+  // {"average":0},
+  // {"variance":0}]
+  allData() {
+    var arr = [];
+    var date = new Date().toString();
+    arr.push({"studyID": this.getStudyID()});
+    arr.push({"date": date});
+    arr.push({"sex": this.getSex()});
+    arr.push({"dateOfBirth": this.getDOB()});
+    arr.push({"minHz": this.getMinHZ()});
+    arr.push({"maxHz": this.getMaxHZ()});
+    arr.push({"session": this.getRuns()});
+    arr.push({"average": this.getAverage()});
+    arr.push({"variance": this.getVariance()});
+    console.log("final json array is: " + JSON.stringify(arr));
+  }
 }
