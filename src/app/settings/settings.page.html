@@ -18,14 +18,18 @@
           <ion-label color="primary">{{ runTotal }}</ion-label>
       </ion-item>
       
+      <!-- Testing out the minimum frequency picker -->
       <ion-item>
           <ion-label>Minimum Frequency</ion-label>
-          <ion-input [(ngModel)]="min" (ionChange)="setMin()"></ion-input>
+          <ion-button slot="end" fill="clear" (click)="showMinPicker()">Change</ion-button>
+          <ion-label color="primary">{{ min }}</ion-label>
       </ion-item>
 
-      <ion-item>
+       <!-- Testing out the maximum frequency picker -->
+       <ion-item>
           <ion-label>Maximum Frequency</ion-label>
-          <ion-input [(ngModel)]="max" (ionChange)="setMax()"></ion-input>
+          <ion-button slot="end" fill="clear" (click)="showMaxPicker()">Change</ion-button>
+          <ion-label color="primary">{{ max }}</ion-label>
       </ion-item>
 
       <h6 style="text-align: center">Input Fields Displayed in Form</h6> 

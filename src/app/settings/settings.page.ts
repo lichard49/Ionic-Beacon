@@ -41,6 +41,10 @@ export class SettingsPage implements OnInit {
   }
 
   async showBasicPicker() {
+    var rangeOptions = [];
+    for (var i = 1; i <= 10; i++) {
+      rangeOptions.push({ text: '' + i, value: i })
+    }
     let opts: PickerOptions = {
       buttons: [
         {
@@ -54,18 +58,7 @@ export class SettingsPage implements OnInit {
       columns: [
         {
           name: 'framework',
-          options: [
-            { text: '1', value: 1 },
-            { text: '2', value: 2 },
-            { text: '3', value: 3 },
-            { text: '4', value: 4 },
-            { text: '5', value: 5 },
-            { text: '6', value: 6 },
-            { text: '7', value: 7 },
-            { text: '8', value: 8 },
-            { text: '9', value: 9 },
-            { text: '10', value: 10 },
-          ]
+          options: rangeOptions
         }
       ]
     };
@@ -75,6 +68,68 @@ export class SettingsPage implements OnInit {
       let col = await picker.getColumn('framework');
       this.runTotal = col.options[col.selectedIndex].value;
       this.setTotal();
+    });
+  }
+
+  async showMinPicker() {
+    var rangeOptions = [];
+    for (var i = 15; i <= 30; i++) {
+      rangeOptions.push({ text: '' + i, value: i })
+    }
+    let opts: PickerOptions = {
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Done'
+        }
+      ],
+      columns: [
+        {
+          name: 'framework',
+          options: rangeOptions
+        }
+      ]
+    };
+    let picker = await this.pickerCtrl.create(opts);
+    picker.present();
+    picker.onDidDismiss().then(async data => {
+      let col = await picker.getColumn('framework');
+      this.min = col.options[col.selectedIndex].value;
+      this.setMin();
+    });
+  }
+
+  async showMaxPicker() {
+    var rangeOptions = [];
+    for (var i = 40; i <= 100; i++) {
+      rangeOptions.push({ text: '' + i, value: i })
+    }
+    let opts: PickerOptions = {
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel'
+        },
+        {
+          text: 'Done'
+        }
+      ],
+      columns: [
+        {
+          name: 'framework',
+          options: rangeOptions
+        }
+      ]
+    };
+    let picker = await this.pickerCtrl.create(opts);
+    picker.present();
+    picker.onDidDismiss().then(async data => {
+      let col = await picker.getColumn('framework');
+      this.max = col.options[col.selectedIndex].value;
+      this.setMax();
     });
   }
 
@@ -107,9 +162,11 @@ export class SettingsPage implements OnInit {
 
   setMin() {
     this.dataService.setMinHZ(this.min);
+    console.log(this.dataService.getMinHZ());
   }
 
   setMax() {
     this.dataService.setMaxHZ(this.max);
+    console.log(this.dataService.getMaxHZ());
   }
 }

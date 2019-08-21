@@ -7,14 +7,8 @@
   <h1 style="text-align: center">Session Summary</h1>
 
   <div class="results">
-      Average: <br> 
-        <div class="box">
-            {{ roundedAverage }} Hz
-        </div>
-      Variance: <br> 
-      <div class="box">
-          {{ roundedVariance }} 
-      </div>
+      <p> Average:  <strong> {{ roundedAverage }} Hz </strong>  </p> 
+      <p> Variance: <strong> {{ roundedVariance }} </strong> </p>
       
      <!-- <div *ngFor="let result of results; let i = index">
        Run {{ i + 1 }}: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -26,6 +20,7 @@
         </div>
       </div> -->
 
+      <h3 style="text-align: center">Individual Run Results</h3>
       <table>
 
         <tr>
