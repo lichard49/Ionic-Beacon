@@ -20,6 +20,8 @@ export class SummaryPage implements OnInit {
   runAverages: any[] = [];
   email: string;
 
+  prefilledNotes: string;
+
   average: number;
   roundedAverage: number;
 
@@ -41,6 +43,8 @@ export class SummaryPage implements OnInit {
 
   ngOnInit() { 
     this.results = this.dataService.getRuns();
+    this.prefilledNotes = this.dataService.getNotes();
+    (<HTMLInputElement>document.getElementById("prefill")).value = this.prefilledNotes;
     var runNumbers = [];
     for (var i = 0; i < this.results.length; i++) {
       runNumbers.push("Run " + (i + 1));
@@ -83,6 +87,11 @@ export class SummaryPage implements OnInit {
         }
       }
     });
+  }
+
+  updateNotes() {
+    this.dataService.setNotes(this.prefilledNotes);
+    console.log(this.dataService.getNotes());
   }
 
   // this is causing infinite amount of runs, fix tomorrow
@@ -132,6 +141,7 @@ export class SummaryPage implements OnInit {
     }
     this.average = sum / this.results.length;
     this.roundedAverage = Math.round(this.average * 10) / 10;
+    this.dataService.setAverage(this.average);
   }
 
   computeVariance() {
@@ -146,6 +156,7 @@ export class SummaryPage implements OnInit {
     }
     this.variance = this.variance / this.results.length;
     this.roundedVariance = Math.round(this.variance * 10) / 10;
+    this.dataService.setVariance(this.variance);
   }
 
   sendEmail() {
@@ -155,8 +166,10 @@ export class SummaryPage implements OnInit {
     this.emailComposer.open({
       to: this.email,
       subject: 'Beacon Session Results',
-      body: "Date: " + dateString + "\nParticipant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + "\n StudyID: " + 
-      this.dataService.getStudyID() + "\nResults: " + this.resultsForEmail + "\nNotes: " + this.dataService.getNotes()
+      body: "Date: " + dateString + "\nParticipant ID: " + this.dataService.getParticipantID() + "\nDate of Birth: " + this.dataService.getDOB() + 
+      "\n StudyID: " + this.dataService.getStudyID() + "\nResults: " + this.resultsForEmail + "\nTotal Number of Runs: " + this.dataService.getRunTotal() 
+      + "\nNotes: " + this.dataService.getNotes() + "\nMin HZ: " + this.dataService.getMinHZ() + "\nMax HZ: " + this.dataService.getMaxHZ() + 
+      "\nAverage: " + this.dataService.getAverage() + "\nVariance: " + this.dataService.getVariance()
     })
   }
 }

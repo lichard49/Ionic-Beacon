@@ -154,6 +154,10 @@ export class RunPage implements OnInit {
     }, delay);
   }
 
+  stopSession() {
+    clearInterval(this.interval);
+  }
+
 
   /*
   Stops the decreasing run and records the frequency associated with the decreasing run. 
@@ -209,16 +213,6 @@ export class RunPage implements OnInit {
     this.redoFlag = true;
     console.log("In redo run, the current run is: " + this.currentRun);
    }
-
-   stopSession() {
-    clearInterval(this.interval);
-    console.log(this.dataService.getRuns());
-   }
-
-  // displayData() {
-  //   this.incrTestResult = this.sessionServ.getIncr();
-  //   this.decrTestResult = this.sessionServ.getDecr();
-  // }
 
   // Sends data to the device
   sendFrequencyData(num) {

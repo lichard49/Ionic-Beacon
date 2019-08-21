@@ -51,6 +51,13 @@
     </ion-card-content>
   </ion-card>
   
+  <div class="notes">
+    <h4>Notes</h4>
+    <div class="notesBox">
+        <ion-textarea id="prefill" [(ngModel)]="prefilledNotes" (ionChange)="updateNotes()"></ion-textarea>
+    </div>
+  </div>
+
   <div class="results">
     <ion-button *ngIf="quickplayMode == false" routerLink="/home" style="float: right" (click)="promptForEmail()">Done</ion-button>
     <ion-button *ngIf="quickplayMode == true" routerLink="/home" style="float: right" (click)="clearRuns()">Done</ion-button>

@@ -18,7 +18,6 @@ export class DataService {
   date: string;
   average: number;
   variance: number;
-  session: any;
   notes: string;
 
   constructor() { 
@@ -65,6 +64,14 @@ export class DataService {
 
   setMinHZ(hz) {
     this.minHz = hz;
+  }
+
+  setAverage(avg) {
+    this.average = avg;
+  }
+
+  setVariance(va) {
+    this.variance = va;
   }
 
   setMaxHZ(hz) {
@@ -126,10 +133,6 @@ export class DataService {
 
   getDate() {
     return this.date;
-  }
-
-  getSession() {
-    return this.session;
   }
 
   getAverage() {
