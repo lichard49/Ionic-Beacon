@@ -14,22 +14,19 @@
       <!-- For selecting the total number of runs in a session. -->
       <ion-item>
           <ion-label>Number of Runs</ion-label>
-          <ion-button slot="end" fill="clear" (click)="showBasicPicker()">Change</ion-button>
-          <ion-label color="primary">{{ runTotal }}</ion-label>
+          <ion-button style="font-size: 17px" slot="end" fill="clear" (click)="showBasicPicker()">{{ runTotal }} <ion-icon name="arrow-dropdown"></ion-icon> </ion-button>
       </ion-item>
       
       <!-- Testing out the minimum frequency picker -->
       <ion-item>
           <ion-label>Minimum Frequency</ion-label>
-          <ion-button slot="end" fill="clear" (click)="showMinPicker()">Change</ion-button>
-          <ion-label color="primary">{{ min }}</ion-label>
+          <ion-button style="font-size: 17px" slot="end" fill="clear" (click)="showMinPicker()">{{ min }} &nbsp; <ion-icon name="arrow-dropdown"></ion-icon> </ion-button>
       </ion-item>
 
        <!-- Testing out the maximum frequency picker -->
        <ion-item>
           <ion-label>Maximum Frequency</ion-label>
-          <ion-button slot="end" fill="clear" (click)="showMaxPicker()">Change</ion-button>
-          <ion-label color="primary">{{ max }}</ion-label>
+          <ion-button style="font-size: 17px" slot="end" fill="clear" (click)="showMaxPicker()"> {{ max }} &nbsp; <ion-icon name="arrow-dropdown"></ion-icon> </ion-button>
       </ion-item>
 
       <h6 style="text-align: center">Input Fields Displayed in Form</h6> 
