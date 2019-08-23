@@ -21,8 +21,9 @@ export class DataService {
   notes: string;
 
   constructor() { 
-    this.studyID = '';
-    this.participantID = '';
+     // dummies
+     this.studyID = '1231234';
+    this.participantID = '223453245';
     this.dateOfBirth = '';
     this.sex = '';
     this.minHz = 25.0;
@@ -31,6 +32,16 @@ export class DataService {
     this.date = '';
     this.average = 0.0;
     this.variance = 0.0;
+    // this.studyID = '';
+    // this.participantID = '';
+    // this.dateOfBirth = '';
+    // this.sex = '';
+    // this.minHz = 25.0;
+    // this.maxHz = 55.0;
+    // this.runs = [];
+    // this.date = '';
+    // this.average = 0.0;
+    // this.variance = 0.0;
   }
 
   // setters
@@ -174,28 +185,21 @@ export class DataService {
   //   }
   // ]
 
-  // [
-  //  { "studyID":"2738" },
-  // {"date":"2019-08-19T21:55:19.245Z"},
-  // {"sex":""},
-  // {"dateOfBirth":""},
-  // {"minHz":25},
-  // {"maxHz":55},
-  // {"session":[[{"incr":26.1,"decr":54.5}],[{"incr":25.7,"decr":54.7}]]},
-  // {"average":0},
-  // {"variance":0}]
   allData() {
     var arr = [];
     var date = new Date().toString();
-    arr.push({"studyID": this.getStudyID()});
-    arr.push({"date": date});
-    arr.push({"sex": this.getSex()});
-    arr.push({"dateOfBirth": this.getDOB()});
-    arr.push({"minHz": this.getMinHZ()});
-    arr.push({"maxHz": this.getMaxHZ()});
-    arr.push({"session": this.getRuns()});
-    arr.push({"average": this.getAverage()});
-    arr.push({"variance": this.getVariance()});
+    var obj = {
+      "studyID": this.getStudyID(),
+      "date": date,
+      "sex": this.getSex(),
+      "dateOfBirth": this.getDOB(),
+      "minHz": this.getMinHZ(),
+      "maxHz": this.getMaxHZ(),
+      "session": this.getRuns(),
+      "average": this.getAverage(),
+      "variance": this.getVariance(),
+    }
+    arr.push(obj);
     console.log("final json array is: " + JSON.stringify(arr));
   }
 }

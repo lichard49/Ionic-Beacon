@@ -9,7 +9,25 @@
 <ion-content>
   <h1 style="text-align: center">History</h1>
   <ion-col>
-    <div class="table" *ngFor="let data of parsedData"> 
+        <div class="table" *ngFor="let data of correctFormatData"> 
+            <div *ngFor="let entry of data">
+                <br>
+                <div class="colSep"></div>
+                <div routerLink="/dummy-history">
+                    Study ID: #{{ entry.studyID }} 
+                    <br>
+                    <div class="arrow">
+                        <ion-icon name="play"></ion-icon>
+                    </div>
+                    <br>
+                    <ion-row>
+                        {{ entry.date | date: 'fullDate' }} 
+                        {{ entry.date | date: 'shortTime' }}
+                    </ion-row>
+                </div>
+            </div>
+        </div>
+    <!-- <div class="table" *ngFor="let data of parsedData"> 
         <br>
         <div class="colSep"></div>
         <div routerLink="/dummy-history">
@@ -24,7 +42,7 @@
                 {{ data.date | date: 'shortTime' }}
             </ion-row>
         </div>
-    </div>
+    </div> -->
 
     <div class="table">
         <div class="colEnd"></div>

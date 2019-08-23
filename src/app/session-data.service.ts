@@ -4,25 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SessionDataService {
-  incrDataPoint: number = 0;
-  decrDataPoint: number = 0;
-  constructor() { }
+  allData = [];
 
-  getIncr() {
-    return this.incrDataPoint;
+  constructor() {
+
   }
 
-  getDecr() {
-    return this.decrDataPoint;
+  getAllData() {
+    return this.allData;
   }
-
-  setIncr(data) {
-    this.incrDataPoint = data;
-  }
-
-  setDecr(data) {
-    this.decrDataPoint = data;
-  }
-
-
 }

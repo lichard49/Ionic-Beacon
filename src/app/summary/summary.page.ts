@@ -56,6 +56,8 @@ export class SummaryPage implements OnInit {
       var arr = this.results[i];
       this.noRedoes.push(arr[0]);
     }
+    
+    this.dataService.allData();
     // var runAverages = [];
     // for (var i = 0; i < this.noRedoes.length; i++) {
     //   var arr = this.noRedoes[i];
