@@ -80,6 +80,7 @@ export class SummaryPage implements OnInit {
     var json = array[0];
     json["average"] = this.average;
     json["variance"] = this.variance;
+    json["notes"] = this.dataService.getNotes();
 
     console.log("");
     console.log("ENTERED BREAKPOINT 2");
@@ -118,6 +119,15 @@ export class SummaryPage implements OnInit {
   updateNotes() {
     this.dataService.setNotes(this.prefilledNotes);
     console.log(this.dataService.getNotes());
+    // Storing the average and variance in the session data
+    var mainArray = this.sessionData.getAllData();
+    // obtain the most recent entry
+    var array = mainArray[0];
+    var json = array[0];
+    json["notes"] = this.dataService.getNotes();
+
+    console.log("ENTERED BREAKPOINT #NOTES");
+    console.log(this.sessionData.getAllData());
   }
 
   // this is causing infinite amount of runs, fix tomorrow

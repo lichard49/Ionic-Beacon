@@ -34,6 +34,7 @@ export class DataService {
     this.date = '';
     this.average = 0.0;
     this.variance = 0.0;
+    this.notes = '';
   }
 
   // setters
@@ -182,12 +183,15 @@ export class DataService {
     var date = new Date().toString();
     var obj = {
       "studyID": this.getStudyID(),
+      "participantID": this.getParticipantID(),
       "date": date,
       "sex": this.getSex(),
       "dateOfBirth": this.getDOB(),
       "minHz": this.getMinHZ(),
       "maxHz": this.getMaxHZ(),
       "session": this.getRuns(),
+      "runTotal": this.getRunTotal(),
+      "notes": this.getNotes(),
       "average": this.getAverage(),
       "variance": this.getVariance(),
     }

@@ -132,12 +132,6 @@ export class RunPage implements OnInit {
     clearInterval(this.interval);
     // Changes the color to a medium gray to signal that the button is disabled.
     ionicButton.color = 'medium';
-
-    console.log("");
-    console.log("ENTERED BREAKPOINT 5");
-    console.log("");
-    console.log(this.sessionData.getAllData());
-    console.log("");
     
     // Starts the decreasing portion of the test after "delay" number of milliseconds.
     // By default, it starts after 2 seconds. 
@@ -164,11 +158,6 @@ export class RunPage implements OnInit {
   }
 
   stopSession() {
-    console.log("");
-    console.log("ENTERED BREAKPOINT 6");
-    console.log("");
-    console.log(this.sessionData.getAllData());
-    console.log("");
     clearInterval(this.interval);
   }
 
@@ -226,26 +215,6 @@ export class RunPage implements OnInit {
         // console.log(json["session"]);
       }
     }
-    console.log("");
-    console.log("ENTERED BREAKPOINT 2");
-    console.log("");
-    console.log(this.sessionData.getAllData());
-    console.log("");
-   }
-
-   testing() {
-    var array = [
-      {"studyID":"",
-      "date":"Fri Aug 23 2019 12:38:26 GMT-0700 (PDT)",
-      "sex":"","dateOfBirth":"",
-      "minHz":25,"maxHz":55,
-      "session":[[{"incr":25.1,"decr":55},{"incr":25.3,"decr":54.8}]],
-      "average":0,
-      "variance":0}]
-      
-      var json = array[0];
-      console.log(json);
-      console.log(json["session"]);
    }
 
    nextRun(ionicButton) {
@@ -258,12 +227,6 @@ export class RunPage implements OnInit {
     this.values = this.min_hz;
     this.startIncr(ionicButton);
     this.redoFlag = false;
-
-    console.log("");
-    console.log("ENTERED BREAKPOINT 3");
-    console.log("");
-    console.log(this.sessionData.getAllData());
-    console.log("");
    }
 
    redoRun(ionicButton) {
@@ -276,12 +239,6 @@ export class RunPage implements OnInit {
     this.startIncr(ionicButton);
     this.redoFlag = true;
     console.log("In redo run, the current run is: " + this.currentRun);
-
-    console.log("");
-    console.log("ENTERED BREAKPOINT 4");
-    console.log("");
-    console.log(this.sessionData.getAllData());
-    console.log("");
    }
 
   // Sends data to the device
