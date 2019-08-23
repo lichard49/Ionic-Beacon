@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataService } from '../data.service';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { AlertController } from '@ionic/angular';
+import { SessionDataService } from '../session-data.service';
 
 import { Chart } from 'chart.js';
 import { FormService } from '../form.service';
@@ -36,7 +37,7 @@ export class SummaryPage implements OnInit {
     private emailComposer: EmailComposer,
     private alertCtrl: AlertController,
     private formServ: FormService,
-   
+    private sessionData: SessionDataService
   ) { 
   }
 
@@ -56,8 +57,6 @@ export class SummaryPage implements OnInit {
       var arr = this.results[i];
       this.noRedoes.push(arr[0]);
     }
-    
-    this.dataService.allData();
     // var runAverages = [];
     // for (var i = 0; i < this.noRedoes.length; i++) {
     //   var arr = this.noRedoes[i];
@@ -67,7 +66,27 @@ export class SummaryPage implements OnInit {
     // }
     this.computeAverage();
     this.computeVariance();
-    this.dataService.allData();
+
+    console.log("");
+    console.log("ENTERED BREAKPOINT 1");
+    console.log("");
+    console.log(this.sessionData.getAllData());
+    console.log("");
+
+    // Storing the average and variance in the session data
+    var mainArray = this.sessionData.getAllData();
+    // obtain the most recent entry
+    var array = mainArray[0];
+    var json = array[0];
+    json["average"] = this.average;
+    json["variance"] = this.variance;
+
+    console.log("");
+    console.log("ENTERED BREAKPOINT 2");
+    console.log("");
+    console.log(this.sessionData.getAllData());
+    console.log("");
+
 
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: "line",

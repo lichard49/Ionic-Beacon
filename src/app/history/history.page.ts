@@ -3,6 +3,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { SessionDataService } from '../session-data.service';
 
 @Component({
   selector: 'app-history',
@@ -79,38 +80,47 @@ export class HistoryPage implements OnInit {
     }
   ]
 
-  correctFormatData = 
-  [
-    [
-      {"studyID":"123",
-      "date":"Fri Aug 23 2019 10:47:34 GMT-0700 (PDT)",
-      "sex":"",
-      "dateOfBirth":"",
-      "minHz":25,
-      "maxHz":55,
-      "session":[[{"incr":25.5,"decr":54.6}],
-      [{"incr":25.5,"decr":54.9}]],
-      "average":40.125,
-      "variance":427.80375}
-    ],
-    [
-      {"studyID":"567",
-      "date":"Fri Aug 23 2019 10:47:34 GMT-0700 (PDT)",
-      "sex":"",
-      "dateOfBirth":"",
-      "minHz":25,
-      "maxHz":55,
-      "session":[[{"incr":25.5,"decr":54.6}],
-      [{"incr":25.5,"decr":54.9}]],
-      "average":40.125,
-      "variance":427.80375}
-    ]
-  ];
+  correctFormatData = [];
+
+  // correctFormatData = 
+  // [
+  //   [
+  //     {"studyID":"123",
+  //     "date":"Fri Aug 23 2019 10:47:34 GMT-0700 (PDT)",
+  //     "sex":"",
+  //     "dateOfBirth":"",
+  //     "minHz":25,
+  //     "maxHz":55,
+  //     "session":[[{"incr":25.5,"decr":54.6}],
+  //     [{"incr":25.5,"decr":54.9}]],
+  //     "average":40.125,
+  //     "variance":427.80375}
+  //   ],
+  //   [
+  //     {"studyID":"567",
+  //     "date":"Fri Aug 23 2019 10:47:34 GMT-0700 (PDT)",
+  //     "sex":"",
+  //     "dateOfBirth":"",
+  //     "minHz":25,
+  //     "maxHz":55,
+  //     "session":[[{"incr":25.5,"decr":54.6}],
+  //     [{"incr":25.5,"decr":54.9}]],
+  //     "average":40.125,
+  //     "variance":427.80375}
+  //   ]
+  // ];
 
   // First converts the JSON into a string and then parses it into an object easily accessible by a function.
-  constructor() {
+  constructor(
+    private sessionData: SessionDataService
+  ) {
     // var stringifiedData = JSON.stringify(this.userData);
     // this.parsedData = JSON.parse(stringifiedData);
+
+    this.correctFormatData = sessionData.getAllData();
+
+    console.log("CORRECT FORMAT DATA LOOKS LIKE: ");
+    console.log(this.correctFormatData);
 
     var stringifiedData = JSON.stringify(this.correctFormatData);
     this.parsedData = JSON.parse(stringifiedData);

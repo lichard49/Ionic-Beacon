@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SessionDataService } from '../app/session-data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,11 @@ export class DataService {
   variance: number;
   notes: string;
 
-  constructor() { 
-     // dummies
-     this.studyID = '1231234';
-    this.participantID = '223453245';
+  constructor(
+    private sessionData: SessionDataService
+  ) { 
+    this.studyID = '';
+    this.participantID = '';
     this.dateOfBirth = '';
     this.sex = '';
     this.minHz = 25.0;
@@ -32,16 +34,6 @@ export class DataService {
     this.date = '';
     this.average = 0.0;
     this.variance = 0.0;
-    // this.studyID = '';
-    // this.participantID = '';
-    // this.dateOfBirth = '';
-    // this.sex = '';
-    // this.minHz = 25.0;
-    // this.maxHz = 55.0;
-    // this.runs = [];
-    // this.date = '';
-    // this.average = 0.0;
-    // this.variance = 0.0;
   }
 
   // setters
@@ -185,7 +177,7 @@ export class DataService {
   //   }
   // ]
 
-  allData() {
+  pushAllData() {
     var arr = [];
     var date = new Date().toString();
     var obj = {
@@ -200,6 +192,9 @@ export class DataService {
       "variance": this.getVariance(),
     }
     arr.push(obj);
-    console.log("final json array is: " + JSON.stringify(arr));
+
+    // pushes to the service that holds all of the data
+    this.sessionData.addEntry(arr);
+    // console.log("final json array is: " + JSON.stringify(arr));
   }
 }

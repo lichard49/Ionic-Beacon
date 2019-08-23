@@ -5,6 +5,8 @@ import { DataService } from '../data.service';
 import { RunComponent } from './run.component';
 import { FormService } from '../form.service';
 import { Router } from '@angular/router';
+import { SessionDataService } from '../session-data.service';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 const service_ID = '2220';
 const characteristic_ID = '2222';
@@ -62,17 +64,18 @@ export class RunPage implements OnInit {
   // True if the user pressed quickplay, false otherwise. 
   quickplayMode: boolean;
 
+  // True if there has been no entry in the history associated with this particular session
+  noEntry: boolean = true;
+
   constructor(public navCtrl: NavController, 
     // an Angular service
     //private sessionServ: SessionDataService,
     private dataService: DataService,
     private formServ: FormService,
     public alertController: AlertController,
-    private router: Router
+    private router: Router,
+    private sessionData: SessionDataService
   ) { 
-    // what is this 
-   // this.incrTestResult = sessionServ.getIncr();
-   //  this.decrTestResult = sessionServ.getDecr();
 
     // Obtain the total number of runs from the settings.
     this.runTotal = dataService.getRunTotal();
@@ -129,6 +132,12 @@ export class RunPage implements OnInit {
     clearInterval(this.interval);
     // Changes the color to a medium gray to signal that the button is disabled.
     ionicButton.color = 'medium';
+
+    console.log("");
+    console.log("ENTERED BREAKPOINT 5");
+    console.log("");
+    console.log(this.sessionData.getAllData());
+    console.log("");
     
     // Starts the decreasing portion of the test after "delay" number of milliseconds.
     // By default, it starts after 2 seconds. 
@@ -155,6 +164,11 @@ export class RunPage implements OnInit {
   }
 
   stopSession() {
+    console.log("");
+    console.log("ENTERED BREAKPOINT 6");
+    console.log("");
+    console.log(this.sessionData.getAllData());
+    console.log("");
     clearInterval(this.interval);
   }
 
@@ -188,6 +202,50 @@ export class RunPage implements OnInit {
         [ new RunComponent(this.incrTestResult / 10, this.decrTestResult / 10) ]
       );
     }
+
+    // adding to session data
+    // prereqs: NOT in quickplay mode, only add a new entry 
+    // when there is one run, otherwise just update the entry
+
+    console.log("quickplay mode is: " + this.quickplayMode);
+    console.log("runTotal is: " + this.runTotal);
+    console.log("noEntry is: " + this.noEntry);
+
+    if (!this.quickplayMode && this.currentRun == 1) {
+      if (!this.redoFlag) {
+        console.log("");
+        console.log("ENTERED BREAKPOINT 1");
+        console.log("");
+        this.dataService.pushAllData();
+        console.log(this.sessionData.getAllData());
+      } else {
+        // console.log("entered else branch");
+        // var allData = this.sessionData.getAllData();
+        // var array = allData[0];
+        // var json = array[0];
+        // console.log(json["session"]);
+      }
+    }
+    console.log("");
+    console.log("ENTERED BREAKPOINT 2");
+    console.log("");
+    console.log(this.sessionData.getAllData());
+    console.log("");
+   }
+
+   testing() {
+    var array = [
+      {"studyID":"",
+      "date":"Fri Aug 23 2019 12:38:26 GMT-0700 (PDT)",
+      "sex":"","dateOfBirth":"",
+      "minHz":25,"maxHz":55,
+      "session":[[{"incr":25.1,"decr":55},{"incr":25.3,"decr":54.8}]],
+      "average":0,
+      "variance":0}]
+      
+      var json = array[0];
+      console.log(json);
+      console.log(json["session"]);
    }
 
    nextRun(ionicButton) {
@@ -200,6 +258,12 @@ export class RunPage implements OnInit {
     this.values = this.min_hz;
     this.startIncr(ionicButton);
     this.redoFlag = false;
+
+    console.log("");
+    console.log("ENTERED BREAKPOINT 3");
+    console.log("");
+    console.log(this.sessionData.getAllData());
+    console.log("");
    }
 
    redoRun(ionicButton) {
@@ -212,6 +276,12 @@ export class RunPage implements OnInit {
     this.startIncr(ionicButton);
     this.redoFlag = true;
     console.log("In redo run, the current run is: " + this.currentRun);
+
+    console.log("");
+    console.log("ENTERED BREAKPOINT 4");
+    console.log("");
+    console.log(this.sessionData.getAllData());
+    console.log("");
    }
 
   // Sends data to the device

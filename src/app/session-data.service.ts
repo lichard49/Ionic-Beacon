@@ -13,4 +13,8 @@ export class SessionDataService {
   getAllData() {
     return this.allData;
   }
+
+  addEntry(obj) {
+    this.allData.unshift(obj);
+  }
 }
