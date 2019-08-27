@@ -9,11 +9,11 @@
 <ion-content>
   <h1 style="text-align: center">History</h1>
   <ion-col>
-        <div class="table" *ngFor="let data of correctFormatData"> 
+        <div class="table" *ngFor="let data of correctFormatData; let i = index"> 
             <div *ngFor="let entry of data">
                 <br>
                 <div class="colSep"></div>
-                <div routerLink="/history/{{ entry.studyID }}">
+                <div routerLink="/history/{{ i }}">
                     Study ID: #{{ entry.studyID }} 
                     <br>
                     <div class="arrow">

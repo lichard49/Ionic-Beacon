@@ -7,11 +7,37 @@
 </ion-header>
 
 <ion-content>
-<br>
 <p>
   Slug is: {{ slug }}
-  <br>
-  Session data is: {{ correctFormatData }}
 </p>
+<br>
+<div *ngFor="let data of specificData"  class="format">
+  <div class="sessionInfo">
+      <h2>Study ID: #{{ data.studyID }}</h2>
+      <h6>
+          Date: {{ data.date | date: 'longDate' }}
+          Time: {{ data.date | date: 'shortTime' }}
+      </h6>
+      <br>
+  </div>
+  <div class="row">
+      <ion-row>
+          Ascending Descending
+      </ion-row>
+  </div>
+
+  <div *ngFor="let item of data['session']; let i = index">
+      <ion-row>
+        Run {{ i + 1 }}: 
+        <div class="data">
+            {{ item.incr }}
+            {{ item.decr }}
+        </div>
+      </ion-row>
+    </div>
+  
+  
+
+</div>
  
 </ion-content>

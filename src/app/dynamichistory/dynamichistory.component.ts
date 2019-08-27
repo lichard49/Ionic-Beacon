@@ -10,7 +10,9 @@ import { SessionDataService } from '../session-data.service';
 export class DynamichistoryComponent implements OnInit {
   private routeSub: any;
   slug: string;
-  correctFormatData = [];
+  allData = [];
+  specificData = [];
+
 
   constructor(
     private route: ActivatedRoute,
@@ -18,11 +20,21 @@ export class DynamichistoryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.routeSub = this.route.params.subscribe(params =>
-      this.slug = params['slug']
-    );
-    this.correctFormatData = this.sessionData.getAllData();
-    console.log(this.correctFormatData);
+    // this.routeSub = this.route.params.subscribe(params => {
+    //   this.slug = params['slug'];
+    //   console.log("this.slug is: " + this.slug);
+    // }
+    // );
+
+    this.route.params.subscribe(params => {
+      this.slug = params['slug'];
+      console.log(parseInt(this.slug));
+      console.log("we have reached the params section!");
+      this.allData = this.sessionData.getAllData();
+      console.log(this.allData);
+      this.specificData = this.allData[parseInt(this.slug)];
+      console.log(this.specificData);
+    });
   }
 
 }
