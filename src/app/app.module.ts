@@ -11,10 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { DatePicker } from '@ionic-native/date-picker/ngx';
 import { EmailComposer } from '@ionic-native/email-composer/ngx';
+import { DynamichistoryComponent } from '../app/dynamichistory/dynamichistory.component';
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DynamichistoryComponent],
   entryComponents: [],
   imports: [
     BrowserModule, 

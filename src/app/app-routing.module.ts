@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { DynamichistoryComponent } from '../app/dynamichistory/dynamichistory.component';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'run', loadChildren: './run/run.module#RunPageModule' },
   { path: 'summary', loadChildren: './summary/summary.module#SummaryPageModule' },
   { path: 'notes', loadChildren: './notes/notes.module#NotesPageModule' },
+  { path: 'history/:slug', component: DynamichistoryComponent}
 ];
 
 @NgModule({

@@ -13,7 +13,7 @@
             <div *ngFor="let entry of data">
                 <br>
                 <div class="colSep"></div>
-                <div routerLink="/dummy-history">
+                <div routerLink="/history/123">
                     Study ID: #{{ entry.studyID }} 
                     <br>
                     <div class="arrow">
@@ -25,24 +25,20 @@
                         {{ entry.date | date: 'shortTime' }}
                     </ion-row>
                 </div>
+                <!-- <div routerLink="/dummy-history">
+                    Study ID: #{{ entry.studyID }} 
+                    <br>
+                    <div class="arrow">
+                        <ion-icon name="play"></ion-icon>
+                    </div>
+                    <br>
+                    <ion-row>
+                        {{ entry.date | date: 'fullDate' }} 
+                        {{ entry.date | date: 'shortTime' }}
+                    </ion-row>
+                </div> -->
             </div>
         </div>
-    <!-- <div class="table" *ngFor="let data of parsedData"> 
-        <br>
-        <div class="colSep"></div>
-        <div routerLink="/dummy-history">
-            Study ID: #{{ data.studyID }} 
-            <br>
-            <div class="arrow">
-                <ion-icon name="play"></ion-icon>
-            </div>
-            <br>
-            <ion-row>
-                {{ data.date | date: 'fullDate' }} 
-                {{ data.date | date: 'shortTime' }}
-            </ion-row>
-        </div>
-    </div> -->
 
     <div class="table">
         <div class="colEnd"></div>

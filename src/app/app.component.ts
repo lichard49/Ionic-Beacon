@@ -10,9 +10,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
 
-  // added this for dynamic routing. aug 23
-  links: Array<{ text: string, path: string }> = [];
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
