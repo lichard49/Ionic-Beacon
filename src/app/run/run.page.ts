@@ -144,14 +144,16 @@ export class RunPage implements OnInit {
       this.values = this.max_hz;
       // Frequency decreases at a step rate of 0.1 Hz / 0.2 secs. 
       this.interval = setInterval(() => {
-        // if the frequency has reached the upper limit, then the function stops
-        if (this.values == this.min_hz) {
-          this.stopDecr(ionicButton);
-        } else {
-          this.sendFrequencyData(this.values);
-          this.values--;
-          console.log(this.values);
-          ionicButton.color = "success";
+        if (!this.sessionEnded) {
+            // if the frequency has reached the upper limit, then the function stops
+          if (this.values == this.min_hz) {
+            this.stopDecr(ionicButton);
+          } else {
+            this.sendFrequencyData(this.values);
+            this.values--;
+            console.log(this.values);
+            ionicButton.color = "success";
+          }
         }
       }, 200)
     }, delay);
@@ -263,14 +265,14 @@ export class RunPage implements OnInit {
         {
           text: 'Yes',
           handler: () => {
-            this.dataService.setRuns([]);
             clearInterval(this.interval);
+            this.sessionEnded = true;
+            this.dataService.setRuns([]);
             this.increasingStopped = true;
             this.dataService.setDOB("");
             this.dataService.setStudyID("");
             this.dataService.setParticipantID("");
             this.dataService.setSex("");
-            this.sessionEnded = true;
             this.router.navigate(['/home']);
           }
         }

@@ -13,7 +13,7 @@
             <div *ngFor="let entry of data">
                 <br>
                 <div class="colSep"></div>
-                <div routerLink="/history/123">
+                <div routerLink="/history/{{ entry.studyID }}">
                     Study ID: #{{ entry.studyID }} 
                     <br>
                     <div class="arrow">
