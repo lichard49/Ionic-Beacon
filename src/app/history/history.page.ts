@@ -129,6 +129,11 @@ export class HistoryPage implements OnInit {
   }
 
   ngOnInit() {
+    // var test = [{"studyID":"","participantID":"","date":"Wed Aug 28 2019 09:03:34 GMT-0700 (PDT)","sex":"","dateOfBirth":"","minHz":25,"maxHz":55,"session":[[{"incr":25.4,"decr":54.9}]],"runTotal":2,"notes":"","average":0,"variance":0}]
+    // var json = test[0];
+    // console.log(json.session);
+    // console.log(json.session[0][0].incr);
+    // console.log(json.session[0][0].decr);
   }
 
 }
