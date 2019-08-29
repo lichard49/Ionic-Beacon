@@ -21,6 +21,7 @@
       </h6>
       <br>
   </div>
+
   <div class="row">
       <ion-row>
           Ascending Descending
@@ -39,18 +40,9 @@
     </ion-row>
   </div>
 
-  <!-- <div *ngFor="let item of data.session">
-    <div *ngFor="let run of item; let i = index">
-      <ion-row>
-        Run {{ i + 1 }}:
-        <div class="data">
-          {{ run.incr }}
-          {{ run.decr }}
-        </div>
-      </ion-row>
-    </div>
-  </div> -->
-
+  <div style="float: right">
+      <ion-button (click)="promptForEmail()">Export</ion-button>
+  </div>
 </div>
  
 </ion-content>

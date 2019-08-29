@@ -130,7 +130,6 @@ export class SummaryPage implements OnInit {
     console.log(this.sessionData.getAllData());
   }
 
-  // this is causing infinite amount of runs, fix tomorrow
   clearRuns() {
     this.dataService.setRuns([]);
   }
