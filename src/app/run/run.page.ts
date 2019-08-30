@@ -6,7 +6,6 @@ import { RunComponent } from './run.component';
 import { FormService } from '../form.service';
 import { Router } from '@angular/router';
 import { SessionDataService } from '../session-data.service';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 const service_ID = '2220';
 const characteristic_ID = '2222';
@@ -23,9 +22,9 @@ export class RunPage implements OnInit {
   // How much progress a user has made in completing the session
   progress: number = 0;
   device_ID = '887F55AA-4AA6-F381-CD4B-8CBE4EE11961';
-  // ??
+  // True if the test is increasing, false otherwise
   incr: boolean = true;
-  // ??
+  // True if the run is still in the "start increasing" stage
   incrTest: boolean = true;
   // True if the run is in decreasing frequency mode, false otherwise
   decrTest: boolean = false;
@@ -159,10 +158,10 @@ export class RunPage implements OnInit {
     }, delay);
   }
 
+  // Clears the timer that was previously set. 
   stopSession() {
     clearInterval(this.interval);
   }
-
 
   /*
   Stops the decreasing run and records the frequency associated with the decreasing run. 
@@ -195,27 +194,9 @@ export class RunPage implements OnInit {
     }
 
     // adding to session data
-    // prereqs: NOT in quickplay mode, only add a new entry 
-    // when there is one run, otherwise just update the entry
-
-    console.log("quickplay mode is: " + this.quickplayMode);
-    console.log("runTotal is: " + this.runTotal);
-    console.log("noEntry is: " + this.noEntry);
-
-    if (!this.quickplayMode && this.currentRun == 1) {
-      if (!this.redoFlag) {
-        console.log("");
-        console.log("ENTERED BREAKPOINT 1");
-        console.log("");
-        this.dataService.pushAllData();
-        console.log(this.sessionData.getAllData());
-      } else {
-        // console.log("entered else branch");
-        // var allData = this.sessionData.getAllData();
-        // var array = allData[0];
-        // var json = array[0];
-        // console.log(json["session"]);
-      }
+    // prereqs: NOT in quickplay mode, only add a new entry when there is one run
+    if (!this.quickplayMode && this.currentRun == 1 && !this.redoFlag) {
+      this.dataService.pushAllData();
     }
    }
 
