@@ -9,6 +9,7 @@
 <ion-content>
   <h1 style="text-align: center">History</h1>
   <ion-col>
+      <!-- Iterates over the data recieved from the session data service.  -->
         <div class="table" *ngFor="let data of correctFormatData; let i = index"> 
             <div *ngFor="let entry of data">
                 <br>

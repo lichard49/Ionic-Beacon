@@ -43,12 +43,10 @@ export class FormPage implements OnInit {
 
     changeStudyID() {
         this.dataService.setStudyID(this.studyID);
-        console.log("study ID is: " + this.dataService.getStudyID());
     }
 
     changeParticipantID() {
       this.dataService.setParticipantID(this.participantID);
-      console.log("participant ID is: " + this.dataService.getParticipantID());
     }
 
     changeSex() {
@@ -56,12 +54,7 @@ export class FormPage implements OnInit {
     }
 
     changeBirthday() {
-      console.log(this.birthday);
       this.dataService.setDOB(this.birthday);
-    }
-
-    displayError() {
-      console.log("displayError pressed");
     }
 
     quickplayToFalse() {
