@@ -7,6 +7,8 @@ import { DataService } from '../data.service';
   templateUrl: './notes.page.html',
   styleUrls: ['./notes.page.scss'],
 })
+
+// The notes page. A user can enter notes associated with their session.
 export class NotesPage implements OnInit {
   notes: string = '';
   constructor(
