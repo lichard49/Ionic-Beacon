@@ -3,6 +3,9 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
+// This is a service used primarily in the Settings and Form pages. It determines which fields to show in the form.
+// It also keeps track of if the app is in quickplay mode or not. 
 export class FormService {
 
   showID: boolean;
