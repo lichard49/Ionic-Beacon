@@ -84,13 +84,6 @@ export class BluetoothPage {
           this.router.navigate(['/home'])
         )
       }, 500);
-        // this.ngZone.run(() =>
-        //   this.router.navigate(['/home'])
-        // )
-
-      // setTimeout(() => {
-      //   this.router.navigate(['/home'])
-      // }, 1000);
     },
     function() {
       document.getElementById("button").innerHTML = "Unable to connect.";
