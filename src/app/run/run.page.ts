@@ -169,7 +169,6 @@ export class RunPage implements OnInit {
   stopDecr(ionicButton) {
     clearInterval(this.interval);
     this.sessionEnded = true;
-    console.log("entered stop decr!");
     // Storing the frequency at which the user saw a flickering light
     //this.sessionServ.setDecr(this.values);
     // If the run is not a redo, then the progress bar gets incremented
@@ -221,7 +220,6 @@ export class RunPage implements OnInit {
     this.values = this.min_hz;
     this.startIncr(ionicButton);
     this.redoFlag = true;
-    console.log("In redo run, the current run is: " + this.currentRun);
    }
 
   // Sends data to the device
