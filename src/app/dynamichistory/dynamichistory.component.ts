@@ -10,13 +10,10 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./dynamichistory.component.scss'],
 })
 export class DynamichistoryComponent implements OnInit {
-  private routeSub: any;
   slug: string;
   allData = [];
   specificData = [];
   email: string;
-  resultsForEmail: string;
-
 
   constructor(
     private route: ActivatedRoute,
@@ -25,21 +22,13 @@ export class DynamichistoryComponent implements OnInit {
     private alertCtrl: AlertController,
   ) { }
 
+  // Obtains the slug value associated with the dynamic URL (the slug part of history/:slug)
+  // and retrieves the data at that index.
   ngOnInit() {
-    // this.routeSub = this.route.params.subscribe(params => {
-    //   this.slug = params['slug'];
-    //   console.log("this.slug is: " + this.slug);
-    // }
-    // );
-
     this.route.params.subscribe(params => {
       this.slug = params['slug'];
-      console.log(parseInt(this.slug));
-      console.log("we have reached the params section!");
       this.allData = this.sessionData.getAllData();
-      console.log(this.allData);
       this.specificData = this.allData[parseInt(this.slug)];
-      console.log(this.specificData);
     });
   }
 
