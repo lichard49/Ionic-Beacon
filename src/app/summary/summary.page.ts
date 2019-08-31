@@ -43,7 +43,6 @@ export class SummaryPage implements OnInit {
 
   ngOnInit() { 
     this.quickplayMode = this.formServ.getQuickplay();
-    console.log("quickplayMode is equal to " + this.quickplayMode);
     this.results = this.dataService.getRuns();
     this.prefilledNotes = this.dataService.getNotes();
     if (this.quickplayMode == false) {
@@ -57,21 +56,8 @@ export class SummaryPage implements OnInit {
       var arr = this.results[i];
       this.noRedoes.push(arr[0]);
     }
-    // var runAverages = [];
-    // for (var i = 0; i < this.noRedoes.length; i++) {
-    //   var arr = this.noRedoes[i];
-    //   var average = (arr.incr + arr.decr) / 2;
-    //   runAverages.push(average);
-    //   console.log("average is: " + average);
-    // }
     this.computeAverage();
     this.computeVariance();
-
-    console.log("");
-    console.log("ENTERED BREAKPOINT 1");
-    console.log("");
-    console.log(this.sessionData.getAllData());
-    console.log("");
 
     // Storing the average and variance in the session data
     var mainArray = this.sessionData.getAllData();
@@ -81,13 +67,6 @@ export class SummaryPage implements OnInit {
     json["average"] = this.average;
     json["variance"] = this.variance;
     json["notes"] = this.dataService.getNotes();
-
-    console.log("");
-    console.log("ENTERED BREAKPOINT 2");
-    console.log("");
-    console.log(this.sessionData.getAllData());
-    console.log("");
-
 
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: "line",
@@ -118,16 +97,12 @@ export class SummaryPage implements OnInit {
 
   updateNotes() {
     this.dataService.setNotes(this.prefilledNotes);
-    console.log(this.dataService.getNotes());
     // Storing the average and variance in the session data
     var mainArray = this.sessionData.getAllData();
     // obtain the most recent entry
     var array = mainArray[0];
     var json = array[0];
     json["notes"] = this.dataService.getNotes();
-
-    console.log("ENTERED BREAKPOINT #NOTES");
-    console.log(this.sessionData.getAllData());
   }
 
   clearRuns() {
@@ -150,7 +125,6 @@ export class SummaryPage implements OnInit {
         {
           text: 'Done',
           handler: data => {
-            console.log("email entered is: " + data.email);
             this.email = data.email;
             this.resultsForEmail = JSON.stringify(this.results);
             this.sendEmail();
@@ -167,10 +141,7 @@ export class SummaryPage implements OnInit {
       var arr = this.results[i];
       var incr = arr[0].incr;
       var decr = arr[0].decr;
-      console.log(incr);
-      console.log(decr);
       var rowAvg = (incr + decr) / 2;
-      console.log("row average is: " + rowAvg);
       this.runAverages.push(rowAvg);
       sum += rowAvg;
     }
