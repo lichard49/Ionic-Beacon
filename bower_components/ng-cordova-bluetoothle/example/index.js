@@ -1,4 +1,4 @@
-angular.module('myApp', ['ionic', 'ngCordovaBluetoothLE'])
+angular.module('beaconApp', ['ionic', 'ngCordovaBluetoothLE'])
 
 //For live reload debugging
 .run(function($state, $ionicPlatform) {
