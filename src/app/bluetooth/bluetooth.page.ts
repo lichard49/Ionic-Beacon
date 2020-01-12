@@ -46,7 +46,7 @@ export class BluetoothPage {
     this.setStatus('Scanning for Bluetooth LE Devices');
     
     // This only displays Beacon / Flicker when it is powered on
-    BLE.startScanWithOptions([service_ID], {
+    BLE.startScanWithOptions([], {
       reportDuplicates: false
     }).subscribe(
       device => this.onDeviceDiscovered(device, ionicButton), 
@@ -55,18 +55,20 @@ export class BluetoothPage {
   }
 
   onDeviceDiscovered(device, ionicButton) {
-    // device is the value to be converted to a JSON string
-    // null means include all properties of the device in the resulting JSON string
-    // 2 means include 2 units of white space into the output JSON string for readability
-    console.log('Discovered ' + JSON.stringify(device, null, 2));
+    if (device.name == 'Beacon') {
+      // device is the value to be converted to a JSON string
+      // null means include all properties of the device in the resulting JSON string
+      // 2 means include 2 units of white space into the output JSON string for readability
+      console.log('Discovered ' + JSON.stringify(device, null, 2));
 
-    this.dataService.setDeviceID(device.id);
-    console.log(device.id);
+      this.dataService.setDeviceID(device.id);
+      console.log(device.id);
 
-    this.ngZone.run(() => {
-      this.devices.push(device);
-    });
-    this.autoConnect(ionicButton);
+      this.ngZone.run(() => {
+        this.devices.push(device);
+      });
+      this.autoConnect(ionicButton);
+    }
   }
 
   autoConnect(ionicButton) {
