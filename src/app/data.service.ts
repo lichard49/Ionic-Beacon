@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { SessionDataService } from '../app/session-data.service';
+import PouchDB from 'pouchdb';
+PouchDB.plugin(require('pouchdb-authentication'));
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +23,10 @@ export class DataService {
   variance: number;
   notes: string;
 
+  data: any;
+  db: any;
+  remote: any;
+
   constructor(
     private sessionData: SessionDataService
   ) { 
@@ -35,6 +41,19 @@ export class DataService {
     this.average = 0.0;
     this.variance = 0.0;
     this.notes = '';
+
+    this.db = new PouchDB('hihihihi');
+
+    this.remote = 'http://localhost:5984/hihihihi';
+
+    let options = {
+      live: true,
+      retry: true,
+      continuous: true
+    };
+
+    this.db.sync(this.remote, options);
+    this.db.post({'blah': 'yayyy'});
   }
 
   // setters
