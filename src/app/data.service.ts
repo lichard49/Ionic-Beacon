@@ -23,9 +23,9 @@ export class DataService {
   variance: number;
   notes: string;
 
-  data: any;
-  db: any;
-  remote: any;
+  db_name: string = 'beacon_db';
+  remote_db: string = 'https://f397f317.ngrok.io/' + this.db_name;
+  local_db: any;
 
   constructor(
     private sessionData: SessionDataService
@@ -42,18 +42,13 @@ export class DataService {
     this.variance = 0.0;
     this.notes = '';
 
-    this.db = new PouchDB('hihihihi');
-
-    this.remote = 'http://localhost:5984/hihihihi';
-
-    let options = {
+    this.local_db = new PouchDB(this.db_name);
+    this.local_db.sync(this.remote_db, {
       live: true,
       retry: true,
       continuous: true
-    };
-
-    this.db.sync(this.remote, options);
-    this.db.post({'blah': 'yayyy'});
+    });
+    this.local_db.post({'blah': 'yayyy'});
   }
 
   // setters
@@ -103,6 +98,7 @@ export class DataService {
 
   addRun(run) {
     this.runs.push(run);
+    console.log(run);
   }
 
   addRunAtIndex(index, run) {
