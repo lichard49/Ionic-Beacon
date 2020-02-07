@@ -26,6 +26,8 @@ export class DataService {
   db_name: string = 'beacon_db';
   remote_db: string = 'https://f397f317.ngrok.io/' + this.db_name;
   local_db: any;
+  db_doc_id: string;
+  db_current_rev: string;
 
   constructor(
     private sessionData: SessionDataService
@@ -48,7 +50,6 @@ export class DataService {
       retry: true,
       continuous: true
     });
-    this.local_db.post({'blah': 'yayyy'});
   }
 
   // setters
@@ -70,6 +71,19 @@ export class DataService {
 
   setParticipantID(id) {
     this.participantID = id;
+    this.local_db.post({
+      'participant_id': this.participantID
+    }).then((response) => {
+      // handle response
+      if (response.ok) {
+        this.db_doc_id = response.id;
+        this.db_current_rev = response.rev;
+      } else {
+        console.log('post failed');
+      }
+    }).catch(function (err) {
+      console.log(err);
+    });
   }
   
   setDOB(DOB) {
@@ -99,6 +113,18 @@ export class DataService {
   addRun(run) {
     this.runs.push(run);
     console.log(run);
+    this.local_db.get(this.db_doc_id).then((doc) => {
+      // update
+      doc.age = run[0].incr;
+
+      // put it back
+      return this.local_db.put(doc);
+    }).then(() => {
+      // fetch again
+      return this.local_db.get(this.db_doc_id);
+    }).then(function (doc) {
+      console.log(doc);
+    });
   }
 
   addRunAtIndex(index, run) {
