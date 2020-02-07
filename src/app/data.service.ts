@@ -115,7 +115,11 @@ export class DataService {
     console.log(run);
     this.local_db.get(this.db_doc_id).then((doc) => {
       // update
-      doc.age = run[0].incr;
+      let date = new Date().getTime();
+      doc[date] = {
+        'ascending': run[0].incr,
+        'descending': run[0].decr
+      };
 
       // put it back
       return this.local_db.put(doc);
